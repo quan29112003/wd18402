@@ -17,7 +17,7 @@ function DonHangShow($id)
 {
     // $data = showOne3table('sanpham', 'danhmuc', 'anhsanpham', 'ID_DanhMuc', 'DanhMucID', 'SanPhamID', 'ID_SanPham','SanPhamID', $id);
 
-    $DonHangShow = showOne2table('order_items','orders','order_id','id','order_id',$id);
+    $DonHangShow = list2table2('order_items','orders','order_id','id','order_id',$id);
 
 
     

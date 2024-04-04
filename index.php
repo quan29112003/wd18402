@@ -44,7 +44,6 @@ match ($act) {
 
     'order-checkout'  => orderCheckout(),
     'order-purchase'  => orderPurchase(),
-    'order-success'  => orderSuccess(),
 
 
 
@@ -59,6 +58,7 @@ match ($act) {
     'updatetk' => updateTk($_GET['id']),
 
     'kiemtradonhang' => KiemTraDonHang($_GET['id']),
+    'xemspdonhang' => XemSPDonHang($_GET['id']),
 
     'search' => searchProduct(),
 };

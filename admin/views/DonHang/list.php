@@ -26,7 +26,7 @@
                                         <th>Địa chỉ</th>
                                         <th>SĐT</th>
                                         <th>Thanh toán</th>
-                                        <th>Số lượng</th>
+                                        <th>Ngày đặt hàng</th>
                                         <th>Tổng tiền</th>
                                         <th>Trạng thái</th>
                                         <th>
@@ -35,52 +35,58 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($donhang as $item) : ?>
-                                        <tr class="align-middle">
-                                            <td><?= $item['id'] ?></td>
+                                    <?php
+                                    $displayedOrderIds = []; // Initialize an array to keep track of displayed order_ids
+                                    foreach ($donhang as $item) :
+                                        if (!in_array($item['order_id'], $displayedOrderIds)) : // Check if order_id is not yet displayed
+                                            $displayedOrderIds[] = $item['order_id']; // Add the order_id to the displayed list
+                                    ?>
+                                            <tr class="align-middle">
+                                                <td><?= $item['order_id'] ?></td>
 
-                                            <td><?= $item['user_name'] ?></td>
+                                                <td><?= $item['user_name'] ?></td>
 
-                                            <td><?= $item['user_email'] ?></td>
+                                                <td><?= $item['user_email'] ?></td>
 
-                                            <td><?= $item['user_address'] ?></td>
+                                                <td><?= $item['user_address'] ?></td>
 
-                                            <td><?= $item['user_phone'] ?></td>
-                                        
-                                            <td><?php
-                                                if ($item['status_payment'] == 0) {
-                                                    echo "Trả tiền khi nhận hàng";
-                                                } elseif ($item['status_payment'] == 1) {
-                                                    echo "Chuyển khoản";
-                                                } else {
-                                                    // Handle unexpected values
-                                                    echo "Unknown payment method";
-                                                }
-                                                ?></td>
+                                                <td><?= $item['user_phone'] ?></td>
 
-                                            <td><?= $item['quantity'] ?></td>
-                                            <td><?= number_format($item['total_bill']) ?>đ</td>
-                                            <td><?php
-                                                if ($item['status_delivery'] == 0) {
-                                                    echo "Chờ xác nhận";
-                                                } elseif ($item['status_delivery'] == 1) {
-                                                    echo "Chờ lấy hàng";
-                                                } elseif ($item['status_delivery'] == 2) {
-                                                    echo "Chờ giao hàng";
-                                                } elseif ($item['status_delivery'] == 3) {
-                                                    echo "Đã giao hàng";
-                                                } else {
-                                                    // Handle unexpected values
-                                                    echo "Unknown payment method";
-                                                }
-                                                ?></td>
+                                                <td><?php
+                                                    if ($item['status_payment'] == 0) {
+                                                        echo "Trả tiền khi nhận hàng";
+                                                    } elseif ($item['status_payment'] == 1) {
+                                                        echo "Chuyển khoản";
+                                                    } else {
+                                                        // Handle unexpected values
+                                                        echo "Unknown payment method";
+                                                    }
+                                                    ?></td>
 
-                                            <td>
-                                                <a href="<?= BASE_URL_ADMIN ?>?act=don-hang-detail&id=<?= $item['id'] ?>" class="btn btn-info">Detail</a>
-                                                <a href="<?= BASE_URL_ADMIN ?>?act=don-hang-update&id=<?= $item['id'] ?>" class="btn btn-success">Cập nhật</a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach ?>
+                                                <td><?= $item['created_at'] ?></td>
+                                                <td><?= number_format($item['total_bill']) ?>đ</td>
+
+                                                <form action="index.php?act=don-hang-update&id=<?= $item['order_id'] ?>" class="d-flex" enctype="multipart/form-data" method="post">
+                                                    <td> <!-- <label for="" class="form-label">Trạng thái</label> -->
+                                                        <select name="status_delivery" id="" class="form-select">
+
+                                                            <option value="0" <?php if ($item['status_delivery'] == 0) echo "selected"; ?>>Chờ xác nhận</option>
+                                                            <option value="1" <?php if ($item['status_delivery'] == 1) echo "selected"; ?>>Chờ lấy hàng</option>
+                                                            <option value="2" <?php if ($item['status_delivery'] == 2) echo "selected"; ?>>Chờ giao hàng</option>
+                                                            <option value="3" <?php if ($item['status_delivery'] == 3) echo "selected"; ?>>Đã giao hàng</option>
+
+                                                        </select>
+
+                                                    </td>
+
+                                                    <td>
+                                                        <a href="<?= BASE_URL_ADMIN ?>?act=don-hang-detail&id=<?= $item['order_id'] ?>" class="btn btn-info">Detail</a>
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </td>
+                                                </form>
+                                            </tr>
+                                        <?php endif; endforeach ?>
+                                   
 
                                 </tbody>
                             </table>

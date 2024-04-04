@@ -31,14 +31,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <td><?= $DonHangShow['product_id']?></td>
-                                    <td><?=$DonHangShow['product_name'] ?></td>
-                                    <td><?=number_format($DonHangShow['price']) ?>đ</td>
-                                    <td><?=$DonHangShow['quantity'] ?></td>
-                                    <td><?=number_format($DonHangShow['total_bill']) ?>đ</td>
-                                    <td><?=$DonHangShow['created_at'] ?></td>
+                                <?php foreach ($DonHangShow as $item) : ?>
+
+                                <td><?= $item['product_id']?></td>
+                                    <td><?=$item['product_name'] ?></td>
+                                    <td><?=number_format($item['price']) ?>đ</td>
+                                    <td><?=$item['quantity'] ?></td>
+                                    <td><?=number_format($item['total_bill']) ?>đ</td>
+                                    <td><?=$item['created_at'] ?></td>
                                    
                                 </tbody>
+                                <?php endforeach?>
                             </table>
                         </div>
                         <!-- <div class="card-footer clearfix">
