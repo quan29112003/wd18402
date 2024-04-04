@@ -130,7 +130,7 @@ if (!function_exists('showOne2table')) {
     function showOne2table($tableName1, $tableName2, $Name1, $Name2, $idName, $id)
     {
         try {
-            $sql = "SELECT * FROM $tableName1 JOIN $tableName2 ON $tableName1.$Name1 = $tableName2.$Name2 WHERE $tableName1.$idName = :id LIMIT 1";
+            $sql = "SELECT * FROM $tableName1 JOIN $tableName2 ON $tableName1.$Name1 = $tableName2.$Name2 WHERE $tableName1.$idName = :id";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 
@@ -241,6 +241,23 @@ if (!function_exists('list2table')) {
         }
     }
 }
+
+if (!function_exists('list2table2')) {
+    function list2table2($tableName1, $tableName2, $name1, $name2, $idName, $id)
+    {
+        try {
+            $sql = "SELECT * FROM $tableName1 JOIN $tableName2 ON $tableName1.$name1 = $tableName2.$name2  WHERE $idName = :id";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
 
 if (!function_exists('list3table')) {
     function list3table($tableName1, $tableName2, $tableName3, $name1, $name2, $name3,  $name4)

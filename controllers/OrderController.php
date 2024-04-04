@@ -41,18 +41,14 @@ function orderPurchase()
         } catch (\Exception $e) {
             debug($e);
         }
-
-        header('Location: ' . BASE_URL . '?act=order-success');
+        $_SESSION['success'] = 'Đặt hàng thành công!';
+        header('Location: ' . BASE_URL . '?act=xemspdonhang&id=' . $orderID);
         exit();
     }
 
     header('Location: ' . BASE_URL);
 }
 
-function orderSuccess()
-{
-    require_once PATH_VIEW . 'giohang/order-success.php';
-}
 
 function KiemTraDonHang($id) {
     // $DonHangDaMua = showOne2table('order_items','orders','order_id','id','order_id',$id);
@@ -68,5 +64,22 @@ function KiemTraDonHang($id) {
 
     $title = 'Chi Tiết Đơn Hàng';
     require_once PATH_VIEW . 'giohang/kiemtradonhang.php';
+
+}
+
+function XemSPDonHang($id) {
+    
+    
+    $SanPhamDonHang = list2table2('order_items','orders','order_id','id','order_id',$id);
+
+    // debug($SanPhamDonHang);
+
+    if (empty($SanPhamDonHang)) {
+        $_SESSION['error'] = 'Không có gì!';
+
+    }
+
+
+    require_once PATH_VIEW . 'giohang/xemspdonhang.php';
 
 }
