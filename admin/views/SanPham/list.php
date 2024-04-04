@@ -51,7 +51,6 @@
                                             <td><?= $item['TenSanPham'] ?></td>
 
                                             <td><?= $item['GiaSP'] ?></td>
-
                                             <td><?= $item['SoLuong'] ?></td>
 
                                             <td><?= $item['MoTa'] ?></td>

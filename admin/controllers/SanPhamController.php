@@ -4,6 +4,7 @@ function SanPhamListAll()
 {
     $title = 'Danh sách sản phẩm';
     $view = 'SanPham/list';
+    $doanhso = 0;
 
     $data = list2table('sanpham', 'danhmuc', 'ID_DanhMuc', 'DanhMucID');
     $dataAnh = listAll('anhsanpham');
