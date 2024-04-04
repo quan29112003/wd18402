@@ -63,6 +63,4 @@ match ($act) {
     'search' => searchProduct(),
 };
 
-
-
 require_once './commons/disconnect-db.php';
