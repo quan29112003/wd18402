@@ -3,7 +3,6 @@
 <!--begin::Sidebar Brand--><?php require_once PATH_VIEW_ADMIN . 'layouts/partials/siderbar.php'?>
 
 <!--begin::App Main-->
-<?= require_once PATH_VIEW_ADMIN . $view . '.php'?>
 <?php require_once PATH_VIEW_ADMIN . $view . '.php'?>
 
 <!--begin::To the end--><?php require_once PATH_VIEW_ADMIN . 'layouts/partials/footer.php'?>
