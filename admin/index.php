@@ -17,14 +17,14 @@ require_file(PATH_MODEL_ADMIN);
 $act = $_GET['act'] ?? '/';
 
 match ($act) {
-     '/' => dashboard(),
+     // '/' => dashboard(),
      
      // crud danh mục
-     'danh-muc' => DanhMucListAll(),
-     'danh-muc-detail' => DanhMucshow($_GET['id']),
-     'danh-muc-create' => DanhMuccreate(),
-     'danh-muc-update' => DanhMucupdate($_GET['id']),
-     'danh-muc-delete' => DanhMucdelete($_GET['id']),
+     // 'danh-muc' => DanhMucListAll(),
+     // 'danh-muc-detail' => DanhMucshow($_GET['id']),
+     // 'danh-muc-create' => DanhMuccreate(),
+     // 'danh-muc-update' => DanhMucupdate($_GET['id']),
+     // 'danh-muc-delete' => DanhMucdelete($_GET['id']),
 
      // crud sản phẩm
      'san-pham' => SanPhamListAll(),
@@ -34,9 +34,9 @@ match ($act) {
      'san-pham-delete' => SanPhamDelete($_GET['id']),
      'anh-san-pham' => AnhSPCreate($_GET['id']),
 
-     'don-hang' => DonHangListAll(),
-     'don-hang-detail' => DonHangShow($_GET['id']),
-     'don-hang-update' => DonHangUpdate($_GET['id']),
+     // 'don-hang' => DonHangListAll(),
+     // 'don-hang-detail' => DonHangShow($_GET['id']),
+     // 'don-hang-update' => DonHangUpdate($_GET['id']),
 
 
 };
