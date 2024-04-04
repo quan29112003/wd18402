@@ -37,8 +37,13 @@
                                 <tbody>
                                     <?php foreach ($data as $item) : ?>
                                         <tr class="align-middle">
-                                            <td><img src="<?= BASE_URL ?>views/img/<?= $item['anhSP1'] ?>" alt="" width="70"></td>
-
+                                            <td>
+                                                <?php foreach ($dataAnh as $value) : ?>
+                                                    <?php if ($value['ID_SanPham'] == $item['SanPhamID']) : ?>
+                                                        <img src="<?= BASE_URL ?>uploads/<?= $value['anhSP1'] ?>" alt="" width="70">
+                                                    <?php endif ?>
+                                                <?php endforeach ?>
+                                            </td>
                                             <td><?= $item['SanPhamID'] ?></td>
 
                                             <td><?= $item['TenDanhMuc'] ?></td>
@@ -46,7 +51,7 @@
                                             <td><?= $item['TenSanPham'] ?></td>
 
                                             <td><?= $item['GiaSP'] ?></td>
-                                        
+
                                             <td><?= $item['SoLuong'] ?></td>
 
                                             <td><?= $item['MoTa'] ?></td>
@@ -54,6 +59,8 @@
                                                 <a href="<?= BASE_URL_ADMIN ?>?act=san-pham-detail&id=<?= $item['SanPhamID'] ?>" class="btn btn-info">show</a>
                                                 <a href="<?= BASE_URL_ADMIN ?>?act=san-pham-update&id=<?= $item['SanPhamID'] ?>" class="btn btn-success">update</a>
                                                 <a href="<?= BASE_URL_ADMIN ?>?act=san-pham-delete&id=<?= $item['SanPhamID'] ?>" onclick="return confirm('bạn có chắc muốn xóa không')" class="btn btn-danger">delete</a>
+                                                <a href="<?= BASE_URL_ADMIN ?>?act=anh-san-pham&id=<?= $item['SanPhamID'] ?>" class="btn btn-dark">upload ảnh</a>
+
                                             </td>
                                         </tr>
                                     <?php endforeach ?>

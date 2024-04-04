@@ -5,8 +5,9 @@ function SanPhamListAll()
     $title = 'Danh sách sản phẩm';
     $view = 'SanPham/list';
 
-    $data = list3table('sanpham', 'danhmuc', 'anhsanpham', 'ID_DanhMuc', 'DanhMucID', 'SanPhamID', 'ID_SanPham');
-    
+    $data = list2table('sanpham', 'danhmuc', 'ID_DanhMuc', 'DanhMucID');
+    $dataAnh = listAll('anhsanpham');
+
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
@@ -42,6 +43,37 @@ function SanPhamCreate()
         ];
 
         insert('sanpham', $data);
+
+        header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
+
+        exit;
+    }
+
+
+    require_once PATH_VIEW_ADMIN . 'layouts/master.php';
+}
+
+function AnhSPCreate($id)
+{
+    $title = 'thêm ảnh sản phẩm';
+    $view = 'SanPham/UpLoad';
+
+
+    $SanPham = showOne('sanpham', 'SanPhamID', $id);
+
+    if (!empty($_POST)) {
+
+        $data = [
+            'ID_SanPham' => $_POST['ID_SanPham'],
+        ];
+
+        $anh = $_FILES['anhSP1'] ?? null;
+
+        if (!empty($anh)) {
+            $data['anhSP1'] = upload_file($anh);
+        }
+        // debug($data);
+        insert('anhsanpham', $data);
 
         header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
 
