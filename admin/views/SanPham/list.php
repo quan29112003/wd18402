@@ -40,7 +40,13 @@
                                             <td>
                                                 <?php foreach ($dataAnh as $value) : ?>
                                                     <?php if ($value['ID_SanPham'] == $item['SanPhamID']) : ?>
-                                                        <img src="<?= BASE_URL ?>uploads/<?= $value['anhSP1'] ?>" alt="" width="70">
+                                                        <div class="image-container position-relative">
+                                                            <img src="<?= BASE_URL ?>uploads/<?= $value['anhSP1'] ?>" alt="" width="70" class="image">
+                                                            <div class="position-absolute top-50 start-50 translate-middle hide-on-hover">
+                                                                <a href="<?= BASE_URL_ADMIN ?>?act=anh-san-pham-update&id=<?= $item['SanPhamID'] ?>&idAnh=<?= $value['anhID'] ?>" class="btn btn-primary">Sửa</a>
+                                                                <a href="<?= BASE_URL_ADMIN ?>?act=anh-san-pham-delete&id=<?= $value['anhID'] ?>" class="btn btn-danger">Xóa</a>
+                                                            </div>
+                                                        </div>
                                                     <?php endif ?>
                                                 <?php endforeach ?>
                                             </td>
@@ -68,9 +74,10 @@
                                                     <div class="col-md-6">
                                                         <a href="<?= BASE_URL_ADMIN ?>?act=san-pham-update&id=<?= $item['SanPhamID'] ?>" class="btn btn-success btn-block mb-2">Sửa</a>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-3">
                                                         <a href="<?= BASE_URL_ADMIN ?>?act=anh-san-pham&id=<?= $item['SanPhamID'] ?>" class="btn btn-dark btn-block">ảnh</a>
                                                     </div>
+
                                                 </div>
                                             </td>
                                         </tr>

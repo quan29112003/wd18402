@@ -33,6 +33,8 @@ match ($act) {
      'san-pham-update' => SanPhamUpdate($_GET['id']),
      'san-pham-delete' => SanPhamDelete($_GET['id']),
      'anh-san-pham' => AnhSPCreate($_GET['id']),
+     'anh-san-pham-update' => AnhSPupdate($_GET['id'], $_GET['idAnh']),
+     'anh-san-pham-delete' => AnhSPdelete($_GET['id']),
 
      'don-hang' => DonHangListAll(),
      'don-hang-detail' => DonHangShow($_GET['id']),
