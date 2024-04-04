@@ -25,8 +25,9 @@
                                         <th>Tên sản phẩm</th>
                                         <th>Giá sản phẩm</th>
                                         <th>Số lượng</th>
-                                        <th>Tổng tiền</th>
+                                        <th>Tổng</th>
                                         <th>Ngày đặt hàng</th>
+                                        
                                         
                                     </tr>
                                 </thead>
@@ -37,8 +38,9 @@
                                     <td><?=$item['product_name'] ?></td>
                                     <td><?=number_format($item['price']) ?>đ</td>
                                     <td><?=$item['quantity'] ?></td>
-                                    <td><?=number_format($item['total_bill']) ?>đ</td>
+                                    <td><?=number_format($item['price']*$item['quantity'])?></td>
                                     <td><?=$item['created_at'] ?></td>
+
                                    
                                 </tbody>
                                 <?php endforeach?>

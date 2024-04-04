@@ -25,8 +25,8 @@
 			</div>
 			<?php unset($_SESSION['error']); ?>
 		<?php endif; ?>
-
-		<table class="table table-striped cart-list kiemtradonhang">
+		<div class="box_general summary">
+		<table class="table table-striped cart-list kiemtradonhang ">
 			<thead>
 				<tr>
 					<th>
@@ -118,6 +118,7 @@
 
 			</tbody>
 		</table>
+		</div>
 	</div>
 	<!-- /cart_actions -->
 

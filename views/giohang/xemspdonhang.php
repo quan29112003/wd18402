@@ -32,7 +32,7 @@
 			<div class="col-lg-4 col-md-6">
 				<div class="step first">
 					<h3>1. Thông tin nhận hàng</h3>
-					<div class="tab-content checkout">
+					<div class="tab-content checkout box_general summary">
 						<div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="tab_1">
 							<?php foreach ($SanPhamDonHang as $item) ?>
 							<div class="form-group">
@@ -102,7 +102,8 @@
 							foreach ($SanPhamDonHang as $pro) :
 								$tongsoluong += $pro['quantity'];
 							?>
-								<li class="clearfix"><em><?= $pro['quantity'] ?>x <?= $pro['product_name'] ?></em> <span style="color:red;"><?= number_format($pro['quantity'] * $pro['price']) ?>đ</span></li>
+								<li class="clearfix"><?= $pro['quantity'] ?>x <?= $pro['product_name'] ?> </li>
+								<li class="clearfix">Giá:<span style="color:red;"> <?= number_format($pro['price']) ?>đ</span></li>
 							<?php endforeach; ?>
 							<!-- <li class="clearfix"><em>1x Armor Air X Fear</em>  <span>$145.00</span></li>
 							<li class="clearfix"><em>2x Armor Air Zoom Alpha</em> <span>$115.00</span></li> -->
