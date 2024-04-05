@@ -4,6 +4,7 @@ function chitietsp($id){
 
     $view = 'chitiet';
 
+    $dataDanhMuc = listAll('danhmuc');
     // Lấy thông tin sản phẩm hiện tại
     $dataSanPham = showOne2table('sanpham', 'anhsanpham', 'SanPhamID', 'ID_SanPham', 'SanPhamID', $id);
     

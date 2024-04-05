@@ -45,10 +45,10 @@ match ($act) {
     'order-checkout'  => orderCheckout(),
     'order-purchase'  => orderPurchase(),
 
-
-
     'login' => authenShowFormLogin(),
     'logout' => authenLogout(),
+
+
     'san-pham' => SanPhamList($_GET['id']),
     'chi-tiet' => chitietsp($_GET['id']),
     'listdoc' => SanPhamList($_GET['id']),

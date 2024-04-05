@@ -1,5 +1,3 @@
-<?= require_once PATH_VIEW . 'layouts/partials/header.php' ?>
-
 <main>
     <div class="container margin_30">
         <!-- <div class="countdown_inner">
@@ -8,7 +6,7 @@
         <div class="row">
             <div class="col-lg-6 magnific-gallery">
                 <p>
-                    <img src="uploads/<?= $dataSanPham['anhSP1'] ?>" alt="" class="img-fluid">
+                    <img src="uploads/<?= $dataSanPham['anhSP1'] ?>" alt="" class="img-fluid" width="400">
                 </p>
             </div>
             <div class="col-lg-6" id="sidebar_fixed">
@@ -110,7 +108,7 @@
                     <div class="grid_item">
                         <figure>
                             <a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
-                                <img class="owl-lazy" src="uploads/<?= $item['anhSP1'] ?>" alt="">
+                                <img class="" src="uploads/<?= $item['anhSP1'] ?>" alt="" >
                             </a>
                         </figure>
                         <a href="">
@@ -230,4 +228,4 @@
         });
     }
 </script>
-<!-- footer --><?= require_once PATH_VIEW . 'layouts/partials/footer.php' ?>
+<!-- footer -->
