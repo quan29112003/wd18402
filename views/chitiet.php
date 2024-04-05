@@ -106,51 +106,28 @@
             foreach ($SanPhamCungLoai as $item) : ?>
                 <div class="item">
                     <div class="grid_item">
-                        <figure>
+                        <div style="color: black;">
+								<figure>
                             <a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
                                 <img class="" src="uploads/<?= $item['anhSP1'] ?>" alt="" >
                             </a>
-                        </figure>
-                        <a href="">
+
+								</figure>
+								<?= $item['TenSanPham'] ?>
+							</div>
+                        <!-- <a href="">
                             <h3><?= $item['TenSanPham'] ?></h3>
-                        </a>
+                        </a> -->
                         <div class="price_box">
-                            <span class="new_price">$<?= $item['GiaSP'] ?></span>
+                            <span class="new_price"><?= number_format($item['GiaSP']) ?>đ</span>
                         </div>
                         <ul>
                         </ul>
-                        <button data-id="'.$id.'" class="btn_1" onclick="addToCart(<?= $id ?>,'<?= $name ?>',<?= $price ?>)">Thêm vào giỏ hàng </button>
+                        <a href="<?= BASE_URL . "?act=cart-add&productID=" . $item['SanPhamID'] ?>"><button class="btn_1">Thêm vào giỏ hàng </button></a>
                         </form>
                     </div>
                 </div>
             <?php endforeach ?>
-            <!-- <div class="item">
-	                <div class="grid_item">
-	                    <span class="ribbon new">New</span>
-	                    <figure>
-	                        <a href="product-detail-1.html">
-	                            <img class="owl-lazy" src="img/products/product_placeholder_square_medium.jpg" data-src="img/products/shoes/4.jpg" alt="">
-	                        </a>
-	                    </figure>
-	                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-	                    <a href="product-detail-1.html">
-	                        <h3>ACG React Terra</h3>
-	                    </a>
-	                    <div class="price_box">
-	                        <span class="new_price">$110.00</span>
-	                    </div>
-	                    <ul>
-	                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-	                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
-	                    </ul>
-	                </div>
-	            </div> -->
-            <!-- /item -->
-            <!-- /item -->
-            <!-- /item -->
-            <!-- /item -->
-            <!-- /item -->
         </div>
         <!-- /products_carousel -->
     </div>

@@ -194,7 +194,7 @@
 		</div>
 		<div class="owl-carousel owl-theme products_carousel">
 			<?php
-			foreach ($dataSanPham as $item) : ?>
+			foreach ($SanPhamNew as $item) : ?>
 				<div class="item">
 					<div class="grid_item">
 					<span class="ribbon new">New</span>

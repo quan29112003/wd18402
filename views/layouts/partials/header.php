@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="Ansonika">
-	<title>AllaiaPhone</title>
+	<title>WatchStore</title>
 
 	<!-- Favicons-->
 	<link rel="shortcut icon" href="uploads/favicon.ico" type="image/x-icon">
@@ -85,7 +85,7 @@
 										</ul>
 									</li>
 									<li>
-										<a href="index.php?act=lienhe">Liên hệ</a>
+										<a href="#">Liên hệ</a>
 									</li>
 									<li>
 										<a href="index.php?act=gioithieu">Giới Thiệu</a>
