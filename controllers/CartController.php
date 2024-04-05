@@ -41,6 +41,8 @@ function cartAdd($productID, $quantity = 1)
 
 function cartList()
 {
+    
+    $dataDanhMuc = listAll('danhmuc');
     require_once PATH_VIEW . 'giohang/giohang.php';
 }
 

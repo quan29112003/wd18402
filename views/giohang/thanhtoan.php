@@ -64,19 +64,19 @@
 							<ul>
 								<li>
 									<label class="container_radio">Trả tiền khi nhận hàng<a href="#0" data-bs-toggle="modal" data-bs-target="#payments_method"></a>
-										<input type="radio"  value="0" checked>
+										<input type="radio" name="status_payment" value="0" checked>
 										<span class="checkmark"></span>
 									</label>
 								</li>
 								<li>
 									<label class="container_radio">Chuyển khoản<a href="#0" data-bs-toggle="modal" data-bs-target="#payments_method"></a>
-										<input type="radio"  value="1">
+										<input type="radio" name="status_payment" value="1">
 										<span class="checkmark"></span>
 									</label>
 								</li>
 							</ul>
 							
-							<h6 class="pb-2">Vận chuyển</h6>
+							<!-- <h6 class="pb-2">Vận chuyển</h6>
 							
 						
 						<ul>
@@ -93,7 +93,7 @@
 									</label>
 								</li>
 								
-							</ul>
+							</ul> -->
 						
 					</div> 
 					<!-- /step -->

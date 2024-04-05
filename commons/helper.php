@@ -33,6 +33,19 @@ if (!function_exists('e404')) {
     }
 }
 
+if (!function_exists('upload_file')) {
+    function upload_file($file)
+    {
+        $path = 'uploads/' . time() . '-' . basename($file['name']);
+        $anhpath = time() . '-' . basename($file['name']);
+        if (move_uploaded_file($file['tmp_name'], PATH_UPLOAD . $path)) {
+            return $anhpath;
+        }
+
+        return null;
+    }
+}
+
 if (!function_exists('middleware_auth_check')) {
     function middleware_auth_check($act, $arrRouteNeedAuth)
     {
@@ -43,6 +56,21 @@ if (!function_exists('middleware_auth_check')) {
             }
         } elseif (empty($_SESSION['user']) && in_array($act, $arrRouteNeedAuth)) {
             header('Location: ' . BASE_URL . '?act=login');
+            exit();
+        }
+    }
+}
+
+if (!function_exists('middleware_auth_check_admin')) {
+    function middleware_auth_check_admin($act, $arrRouteNeedAuth)
+    {
+        if ($act == 'login-admin') {
+            if (!empty($_SESSION['userAdmin'])) {
+                header('Location: ' . BASE_URL_ADMIN);
+                exit();
+            }
+        } elseif (empty($_SESSION['userAdmin']) && in_array($act, $arrRouteNeedAuth)) {
+            header('Location: ' . BASE_URL_ADMIN . '?act=login-admin');
             exit();
         }
     }

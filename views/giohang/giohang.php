@@ -45,22 +45,16 @@ if (empty($_SESSION['cart'])) {
 				<?php $sum_total = 0;
 				if (isset($_SESSION['cart'])) : ?>
 					<?php foreach ($_SESSION['cart'] as $productID => $item) : ?>
-
-
-
-
-
-
 						<tr>
 							<td>
 								<div class="thumb_cart">
-									<img src="views/img/<?= $item['anhSP1'] ?>" width="20%" class="lazy" alt="Image">
-									
+									<img src="uploads/<?= $item['anhSP1'] ?>" width="20%" class="lazy" alt="Image">
+
 								</div>
 								<div class="item_cart"><?= $item['TenSanPham'] ?></div>
 
 							</td>
-							
+
 							<td>
 								<strong>$<?= number_format($item['GiaSP']) ?></strong>
 							</td>
@@ -70,24 +64,26 @@ if (empty($_SESSION['cart'])) {
 								<a href="<?= BASE_URL . '?act=cart-inc&productID=' . $item['SanPhamID'] ?>" class="btn">+</a>
 							</td>
 							<td>
-								<strong>$<?php
-											$total = ((int)$item['GiaSP']) * (int)$item['quantity'];
+								<strong>$
+									<?php
+									$total = ((int)$item['GiaSP']) * (int)$item['quantity'];
 
-											$sum_total += $total;
+									$sum_total += $total;
 
-											echo number_format($total);
-											$_SESSION['resultTotal'] = $sum_total;
+									echo number_format($total);
+									$_SESSION['resultTotal'] = $sum_total;
 
 
-											?></strong>
+									?>
+								</strong>
 							</td>
 							<td class="options">
-								<a href="<?= BASE_URL . '?act=cart-delete&productID=' . $item['SanPhamID'] ?>" class="btn"><i class="ti-trash" "></i></a>
+								<a href="<?= BASE_URL . '?act=cart-delete&productID=' . $item['SanPhamID'] ?>" class="btn"><i class="ti-trash"></i></a>
 							</td>
 
 							<td class=" options">
-										<input type="hidden" name="idsp" value="'.$idsp.'">
-										</form>
+								<input type="hidden" name="idsp" value="'.$idsp.'">
+								</form>
 							</td>
 						</tr>
 					<?php endforeach ?>

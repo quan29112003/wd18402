@@ -1,3 +1,5 @@
+<?= require_once PATH_VIEW . 'layouts/partials/header.php' ?>
+
 <main>
 	<div class="top_banner">
 		<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.3)">
@@ -10,7 +12,7 @@
 					</ul>
 				</div>
 			</div>
-		</div><img src="views/img/banner10.jpg" class="img-fluid" alt="">
+		</div><img src="uploads/banner10.jpg" class="img-fluid" alt="">
 	</div>
 	<!-- /top_banner -->
 	<div id="stick_here"></div>
@@ -21,13 +23,13 @@
 		</aside>
 		<!-- /col -->
 		<div class="col-lg-9">
-			<?php
+			<!-- <?php
 			foreach ($data as $item) : ?>
 				<div class="row row_item">
 					<div class="col-sm-4">
 						<figure>
 							<a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
-								<img class="img-fluid lazy" src="views/img/<?= $item['anhSP1'] ?>" data-src="views/img/<?= $item['anhSP1'] ?>" alt="">
+								<img class="img-fluid lazy" src="uploads/<?= $item['anhSP1'] ?>" data-src="uploads/<?= $item['anhSP1'] ?>" alt="">
 							</a>
 						</figure>
 					</div>
@@ -37,26 +39,43 @@
 						</a>
 						<p><?= $item['SoLuong'] ?></p>
 						<p><?= $item['MoTa'] ?></p>
-						<p>danh mục: <?= $item['TenDanhMuc'] ?></p>
 						<div class="price_box">
 							<span class="new_price">$<?= $item['GiaSP'] ?></span>
 						</div>
 						<br>
 						<ul style="padding-left: 0;">
-							<button class="btn_1" >Thêm vào giỏ hàng </button>
+							<a href="<?= BASE_URL . "?act=cart-add&productID=" .$item['SanPhamID'] ?>"><button class="btn_1" >Thêm vào giỏ hàng </button></a>
 						</ul>
 					</div>
 				</div>
-			<?php endforeach ?>
+			<?php endforeach ?> -->
 			
-			<?php if (isset($search_results)) : ?>
-							<h2>Search Results</h2>
-							<ul>
-								<?php foreach ($search_results as $product) : ?>
-									<li><?= $product['TenSanPham'] ?></li> <!-- Display whatever information you need -->
-								<?php endforeach; ?>
-							</ul>
-						<?php endif; ?>
+			<?php foreach ($data as $item) : ?>
+
+				<div class="row row_item">
+					<div class="col-sm-4">
+						<figure>
+							<a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
+								<img class="img-fluid lazy" src="uploads/<?= $item['anhSP1'] ?>" data-src="uploads/<?= $item['anhSP1'] ?>" alt="">
+							</a>
+						</figure>
+					</div>
+					<div class="col-sm-8">
+						<a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
+							<h3><?= $item['TenSanPham'] ?></h3>
+						</a>
+						<p>Số lượng: <?= $item['SoLuong'] ?></p>
+						<p><?= $item['MoTa'] ?></p>
+						<div class="price_box">
+							<span class="new_price"><?= number_format($item['GiaSP']) ?>đ</span>
+						</div>
+						<br>
+						<ul style="padding-left: 0;">
+							<a href="<?= BASE_URL . "?act=cart-add&productID=" .$item['SanPhamID'] ?>"><button class="btn_1" >Thêm vào giỏ hàng </button></a>
+						</ul>
+					</div>
+				</div>
+            <?php endforeach; ?>
 			<!-- <div class="row row_item">
 	                    <div class="col-sm-4">
 	                        <figure>
@@ -126,3 +145,5 @@
 		});
 	}
 </script>
+
+<!-- footer --><?= require_once PATH_VIEW . 'layouts/partials/footer.php' ?>

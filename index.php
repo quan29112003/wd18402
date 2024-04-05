@@ -44,12 +44,11 @@ match ($act) {
 
     'order-checkout'  => orderCheckout(),
     'order-purchase'  => orderPurchase(),
-    'order-success'  => orderSuccess(),
-
-
 
     'login' => authenShowFormLogin(),
     'logout' => authenLogout(),
+
+
     'san-pham' => SanPhamList($_GET['id']),
     'chi-tiet' => chitietsp($_GET['id']),
     'listdoc' => SanPhamList($_GET['id']),
@@ -58,7 +57,11 @@ match ($act) {
     'qltk' => Qltk(),
     'updatetk' => updateTk($_GET['id']),
     'kiemtradonhang' => KiemTraDonHang($_GET['id']),
-    'xemspdonhang' => XemSpDonHang($_GET['id']),
+    'xemspdonhang' => XemSPDonHang($_GET['id']),
+
+    'search' => searchProduct(),
+
+    'gioithieu' => GioiThieu(),
 };
 
 

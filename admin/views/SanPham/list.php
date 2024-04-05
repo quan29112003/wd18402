@@ -3,7 +3,7 @@
         <div class="container-fluid"><!--begin::Row-->
             <div class="row">
                 <div class="col-sm-6">
-                    <h3 class="mb-0">quản lý danh mục</h3>
+                    <h3 class="mb-0">quản lý sản phẩm</h3>
                 </div>
             </div><!--end::Row-->
         </div><!--end::Container-->
@@ -14,7 +14,7 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Danh Mục</h3>
+                            <h3 class="card-title">Sản Phẩm</h3>
                         </div><!-- /.card-header -->
                         <div class="card-body">
                             <table class="table table-bordered">
@@ -37,8 +37,19 @@
                                 <tbody>
                                     <?php foreach ($data as $item) : ?>
                                         <tr class="align-middle">
-                                            <td><img src="<?= BASE_URL ?>views/img/<?= $item['anhSP1'] ?>" alt="" width="70"></td>
-
+                                            <td>
+                                                <?php foreach ($dataAnh as $value) : ?>
+                                                    <?php if ($value['ID_SanPham'] == $item['SanPhamID']) : ?>
+                                                        <div class="image-container position-relative">
+                                                            <img src="<?= BASE_URL ?>uploads/<?= $value['anhSP1'] ?>" alt="" width="70" class="image">
+                                                            <div class="position-absolute top-50 start-50 translate-middle hide-on-hover">
+                                                                <a href="<?= BASE_URL_ADMIN ?>?act=anh-san-pham-update&id=<?= $item['SanPhamID'] ?>&idAnh=<?= $value['anhID'] ?>" class="btn btn-primary">Sửa</a>
+                                                                <a href="<?= BASE_URL_ADMIN ?>?act=anh-san-pham-delete&id=<?= $value['anhID'] ?>" class="btn btn-danger">Xóa</a>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif ?>
+                                                <?php endforeach ?>
+                                            </td>
                                             <td><?= $item['SanPhamID'] ?></td>
 
                                             <td><?= $item['TenDanhMuc'] ?></td>
@@ -46,14 +57,28 @@
                                             <td><?= $item['TenSanPham'] ?></td>
 
                                             <td><?= $item['GiaSP'] ?></td>
-                                        
+
                                             <td><?= $item['SoLuong'] ?></td>
 
                                             <td><?= $item['MoTa'] ?></td>
                                             <td>
-                                                <a href="<?= BASE_URL_ADMIN ?>?act=san-pham-detail&id=<?= $item['SanPhamID'] ?>" class="btn btn-info">show</a>
-                                                <a href="<?= BASE_URL_ADMIN ?>?act=san-pham-update&id=<?= $item['SanPhamID'] ?>" class="btn btn-success">update</a>
-                                                <a href="<?= BASE_URL_ADMIN ?>?act=san-pham-delete&id=<?= $item['SanPhamID'] ?>" onclick="return confirm('bạn có chắc muốn xóa không')" class="btn btn-danger">delete</a>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <a href="<?= BASE_URL_ADMIN ?>?act=san-pham-detail&id=<?= $item['SanPhamID'] ?>" class="btn btn-info btn-block mb-2">Xem</a>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <a href="<?= BASE_URL_ADMIN ?>?act=san-pham-delete&id=<?= $item['SanPhamID'] ?>" onclick="return confirm('Bạn có chắc muốn xóa không')" class="btn btn-danger btn-block mb-2">Xóa</a>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <a href="<?= BASE_URL_ADMIN ?>?act=san-pham-update&id=<?= $item['SanPhamID'] ?>" class="btn btn-success btn-block mb-2">Sửa</a>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <a href="<?= BASE_URL_ADMIN ?>?act=anh-san-pham&id=<?= $item['SanPhamID'] ?>" class="btn btn-dark btn-block">ảnh</a>
+                                                    </div>
+
+                                                </div>
                                             </td>
                                         </tr>
                                     <?php endforeach ?>

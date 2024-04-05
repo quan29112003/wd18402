@@ -104,6 +104,26 @@ if (!function_exists('listAll')) {
     }
 }
 
+if (!function_exists('listMany')) {
+    function listMany($tableName1, $tableName2, $Name1, $Name2, $idName, $id)
+    {
+        try {
+            $sql = "SELECT * FROM $tableName1 JOIN $tableName2 ON $tableName1.$Name1 = $tableName2.$Name2 WHERE $tableName1.$idName = :id";
+
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
 
 // lấy ra 1 dữ liệu
 if (!function_exists('showOne')) {
@@ -169,7 +189,7 @@ if (!function_exists('showOne3table2')) {
     {
         try {
             $sql = "SELECT * FROM $tableName1 JOIN $tableName2 ON $tableName1.$Name1 = $tableName2.$Name2 JOIN $tableName3 ON $tableName2.$Name3 = $tableName3.$Name4 WHERE $tableName1.$idName = :id";
-            
+
             $stmt = $GLOBALS['conn']->prepare($sql);
 
             $stmt->bindParam(":id", $id);
@@ -242,15 +262,66 @@ if (!function_exists('list2table')) {
     }
 }
 
+if (!function_exists('list2table2')) {
+    function list2table2($tableName1, $tableName2, $name1, $name2, $idName, $id)
+    {
+        try {
+            $sql = "SELECT * FROM $tableName1 JOIN $tableName2 ON $tableName1.$name1 = $tableName2.$name2  WHERE $idName = :id";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+if (!function_exists('list2table3')) {
+    function list2table3($tableName1, $tableName2, $name1, $name2)
+    {
+        try {
+            $sql = "SELECT * FROM $tableName1 JOIN $tableName2 ON $tableName1.$name1 = $tableName2.$name2 ORDER BY $tableName1.$name1 DESC LIMIT 5";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+
 if (!function_exists('list3table')) {
     function list3table($tableName1, $tableName2, $tableName3, $name1, $name2, $name3,  $name4)
     {
         try {
             $sql = "SELECT * FROM $tableName1 JOIN $tableName2 ON $tableName1.$name1 = $tableName2.$name2 JOIN $tableName3 ON $tableName1.$name3 = $tableName3.$name4";
 
-            
+
             $stmt = $GLOBALS['conn']->prepare($sql);
-            
+
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+if (!function_exists('list3table2')) {
+    function list3table2($tableName1, $tableName2, $tableName3, $name1, $name2, $name3,  $name4, $idName, $id)
+    {
+        try {
+            $sql = "SELECT * FROM $tableName1 JOIN $tableName2 ON $tableName1.$name1 = $tableName2.$name2 JOIN $tableName3 ON $tableName1.$name3 = $tableName3.$name4 WHERE $idName = :id";
+
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(":id", $id);
+
             $stmt->execute();
             return $stmt->fetchAll();
         } catch (\Exception $e) {
@@ -260,10 +331,11 @@ if (!function_exists('list3table')) {
 }
 
 if (!function_exists('delete2')) {
-    function delete2($tableName, $id) {
+    function delete2($tableName, $id)
+    {
         try {
             $sql = "DELETE FROM $tableName WHERE id = :id";
-            
+
             $stmt = $GLOBALS['conn']->prepare($sql);
 
             $stmt->bindParam(":id", $id);

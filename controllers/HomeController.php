@@ -15,9 +15,28 @@ function index(){
 
     $dataSanPham = list2table('anhsanpham', 'sanpham', 'ID_SanPham', 'sanphamID');
 
+    $SanPhamNew = list2table3('sanpham', 'anhsanpham', 'SanPhamID', 'ID_SanPham','SanPhamID');
+
+
     require_once PATH_VIEW . 'layouts/master.php';
 }
 
+function searchProduct()
+{
+    // $keyword = $_GET['keyword'];
+    // $cate_id = $_GET['catalog'];
+
+    
+    $dataDanhMuc = listAll('danhmuc');
+
+    $data = searchProductInCatalogue();
+    $list_of_price = list_of_price();
+    require_once PATH_VIEW . 'listdoc.php';
+}
+
+function GioiThieu() {
+    require_once PATH_VIEW . 'gioithieu.php';
+}
 
 // luồng mvc 1: vào index
 // vào index -> được điều hướng đến hàm xử lý logic trong controller tương ứng
