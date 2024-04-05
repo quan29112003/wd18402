@@ -17,20 +17,21 @@
                             <h3 class="card-title">Danh Mục</h3>
                         </div><!-- /.card-header -->
                         <div class="card-body">
+                            
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>id</th>
-                                        <th>name</th>
-                                        <th>email</th>
-                                        <th>ho ten</th>
-                                        <th>dia chi</th>
-                                        <th>so dien thoai</th>
-                                        <th>password</th>
-                                        <th>type</th>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Họ tên</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Password</th>
+                                        <th>Type</th>
                                         <th>
                                             <a href="<?= BASE_URL_ADMIN . '?act=user-create' ?>" class="btn btn-primary">
-                                                <p>thêm mới sản phẩm</p>
+                                                <p>thêm mới users</p>
                                             </a>
                                         </th>
                                     </tr>
@@ -45,9 +46,14 @@
                                             <td><?= $user['diachi'] ?></td>
                                             <td><?= $user['tel'] ?></td>
                                             <td><?= $user['password'] ?></td>
-                                            <td><?= $user['type'] ? 'admin' : 'member' ?></td>
+                                            <td><?= $user['type'] ? 'Admin' : 'Member' ?></td>
                                             <td>
-                                                <a href="<?= BASE_URL_ADMIN ?>?act=user-detail&id=<?= $user['id'] ?>">Show</a>
+                                                <a href="<?= BASE_URL_ADMIN ?>?act=user-detail&id=<?= $user['id'] ?>" class="btn btn-info">Show</a>
+                                                <a href="<?= BASE_URL_ADMIN ?>?act=user-update&id=<?= $user['id'] ?>" class="btn btn-warning">Update</a>
+                                                <a href="<?= BASE_URL_ADMIN ?>?act=user-delete&id=<?= $user['id'] ?>" 
+                                                onclick="return confirm('bạn có chắc chắn muốn xóa không ?')"
+                                                class="btn btn-danger">Delete</a>
+                                                
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -61,3 +67,4 @@
         </div><!--end::Container-->
     </div><!--end::App Content-->
 </main><!--end::App Main--><!--begin::Footer-->
+

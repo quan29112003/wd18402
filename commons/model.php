@@ -91,7 +91,7 @@ if (!function_exists('listAll')) {
     function listAll($tableName)
     {
         try {
-            $sql = "SELECT * FROM $tableName"; 
+            $sql = "SELECT * FROM $tableName ORDER BY id DESC"; 
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 
