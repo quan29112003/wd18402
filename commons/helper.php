@@ -61,6 +61,21 @@ if (!function_exists('middleware_auth_check')) {
     }
 }
 
+if (!function_exists('middleware_auth_check_admin')) {
+    function middleware_auth_check_admin($act, $arrRouteNeedAuth)
+    {
+        if ($act == 'login-admin') {
+            if (!empty($_SESSION['userAdmin'])) {
+                header('Location: ' . BASE_URL_ADMIN);
+                exit();
+            }
+        } elseif (empty($_SESSION['userAdmin']) && in_array($act, $arrRouteNeedAuth)) {
+            header('Location: ' . BASE_URL_ADMIN . '?act=login-admin');
+            exit();
+        }
+    }
+}
+
 function list_of_price()
 {
     $list = [

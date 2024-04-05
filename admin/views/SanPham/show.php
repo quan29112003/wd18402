@@ -32,7 +32,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <td><img src="<?= BASE_URL ?>views/img/<?= $data['anhSP1'] ?>" alt="" width="70"></td>
+                                <td><img src="<?= BASE_URL ?>uploads/<?= $data['anhSP1'] ?>" alt="" width="70"></td>
                                     <td><?=$data['SanPhamID'] ?></td>
                                     <td><?=$data['TenDanhMuc'] ?></td>
                                     <td><?=$data['TenSanPham'] ?></td>
