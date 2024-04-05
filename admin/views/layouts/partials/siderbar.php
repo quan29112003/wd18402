@@ -12,17 +12,17 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="<?= BASE_URL_ADMIN . '?act=danh-muc' ?>" class="nav-link"><i class="nav-icon bi bi-circle"></i>
-                                <p>danh mục</p>
+                                <p>Danh mục</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="<?= BASE_URL_ADMIN . '?act=san-pham' ?>" class="nav-link"><i class="nav-icon bi bi-circle"></i>
-                                <p>sản phẩm</p>
+                                <p>Sản phẩm</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= BASE_URL_ADMIN . '?act=users' ?>" class="nav-link"><i class="nav-icon bi bi-circle"></i>
-                                <p>user</p>
+                            <a href="<?= BASE_URL_ADMIN . '?act=don-hang' ?>" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                                <p>Quản lý đơn hàng</p>
                             </a>
                         </li>
                     </ul>

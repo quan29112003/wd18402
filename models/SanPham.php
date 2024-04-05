@@ -43,7 +43,7 @@ function getAllProduct($kyw, $iddm)
 function getAllProduct_new()
 {
     try {
-        $sql = 'SELECT * FROM sanpham where 1 ORDER BY ID_SanPham desc limit 0,5';
+        $sql = 'SELECT * FROM sanpham where 1 ORDER BY SanPhamID desc limit 0,5';
 
         $stmt = $GLOBALS['conn']->prepare($sql);
 
@@ -115,11 +115,11 @@ function load_ten_dm($iddm) {
 function searchProductInCatalogue()
 {
 // Check if the keyword is provided in the URL
-if(isset($_GET['keyword'])) {
-    $keyword = $_GET['keyword'];
+if(isset($_POST['keyword'])) {
+    $keyword = $_POST['keyword'];
 
     // Perform the search query
-    $sql = "SELECT * FROM sanpham WHERE TenSanPham LIKE :keyword";
+    $sql = "SELECT * FROM sanpham JOIN anhsanpham ON sanpham.SanPhamID = anhsanpham.ID_SanPham WHERE TenSanPham LIKE :keyword";
     $stmt = $GLOBALS['conn']->prepare($sql);
     $stmt->bindValue(':keyword', "%$keyword%", PDO::PARAM_STR);
     $stmt->execute();

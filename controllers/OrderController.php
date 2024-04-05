@@ -2,6 +2,9 @@
 
 function orderCheckout()
 {
+
+    $dataDanhMuc = listAll('danhmuc');
+
     require_once PATH_VIEW . 'giohang/thanhtoan.php';
 }
 
@@ -14,7 +17,7 @@ function orderPurchase()
             $data['user_id']            = $_SESSION['user']['id'];
             $data['total_bill']         = caculator_total_order(false);
             $data['status_delivery']    = STATUS_DELIVERY_WFC;
-            $data['status_payment']     = STATUS_PAYMENT_UNPAID;
+            // $data['status_payment']     = STATUS_PAYMENT_UNPAID;
 
             $orderID = insert_get_last_id('orders', $data);
 
@@ -26,6 +29,7 @@ function orderPurchase()
                     'product_name'  => $item['TenSanPham'],
                     'quantity'      => $item['quantity'],
                     'price'         => $item['GiaSP'],
+                    // 'status_payment' => STATUS_PAYMENT_UNPAID,
                 ];
 
                 insert('order_items', $orderItem);
@@ -40,43 +44,46 @@ function orderPurchase()
         } catch (\Exception $e) {
             debug($e);
         }
-
-        header('Location: ' . BASE_URL . '?act=order-success');
+        $_SESSION['success'] = 'Đặt hàng thành công!';
+        header('Location: ' . BASE_URL . '?act=xemspdonhang&id=' . $orderID);
         exit();
     }
 
     header('Location: ' . BASE_URL);
 }
 
-function orderSuccess()
+
+function KiemTraDonHang($id)
 {
-    require_once PATH_VIEW . 'giohang/order-success.php';
-}
+    // $DonHangDaMua = showOne2table('order_items','orders','order_id','id','order_id',$id);
 
-function KiemTraDonHang($id) {
-    $DonHang = showOne2table('orders','users','user_id','id','user_id',$id) ;
+    //  $DonHangDaMua = list2table('orders','order_items','id','order_id',$id) ;
 
-    if (empty($DonHang)) {
+    $dataDanhMuc = listAll('danhmuc');
+    $DonHangDaMua = list3table2('orders', 'users', 'order_items', 'user_id', 'id', 'id', 'order_id', 'user_id', $id);
+
+
+    if (empty($DonHangDaMua)) {
         $_SESSION['error'] = 'Không có gì!';
-
     }
 
     $title = 'Chi Tiết Đơn Hàng';
     require_once PATH_VIEW . 'giohang/kiemtradonhang.php';
-
 }
 
-function XemSpDonHang($id) {
-    // $DonHangDaMua = showOne2table('order_items','orders','order_id','id','order_id',$id) ;
-
-    $DonHangDaMua = showOne2table('orders','order_items','id','order_id','id',$id) ;
+function XemSPDonHang($id)
+{
 
 
-    
-    if (empty($DonHangDaMua)) {
+    $dataDanhMuc = listAll('danhmuc');
+    $SanPhamDonHang = list2table2('order_items', 'orders', 'order_id', 'id', 'order_id', $id);
+
+    // debug($SanPhamDonHang);
+
+    if (empty($SanPhamDonHang)) {
         $_SESSION['error'] = 'Không có gì!';
     }
-    
-    require_once PATH_VIEW . 'giohang/xemspdonhang.php';
 
+
+    require_once PATH_VIEW . 'giohang/xemspdonhang.php';
 }

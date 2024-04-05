@@ -16,3 +16,19 @@
 //             debug($e);
 //         }
 //     }
+
+function listAnhSanPham($idSP){
+    try {
+        $sql = "SELECT * FROM `anhsanpham` WHERE ID_SanPham = :idSP";
+
+        $stmt = $GLOBALS['conn']->prepare($sql);
+
+        $stmt->bindParam(":idSP", $idSP);
+
+        $stmt->execute();
+
+        return $stmt->fetch();
+    } catch (\Exception $th) {
+        debug($th);
+    }
+}

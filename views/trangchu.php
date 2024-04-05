@@ -1,7 +1,7 @@
 <main>
 	<div id="carousel-home">
 		<div class="owl-carousel owl-theme">
-			<div class="owl-slide cover" style="background-image: url(views/img/banner1.jpg);">
+			<div class="owl-slide cover" style="background-image: url(uploads/banner1.jpg);">
 				<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
 					<div class="container">
 						<div class="row justify-content-center justify-content-md-end">
@@ -19,7 +19,7 @@
 				</div>
 			</div>
 			<!--/owl-slide-->
-			<div class="owl-slide cover" style="background-image: url(views/img/banner5.jpg);">
+			<div class="owl-slide cover" style="background-image: url(uploads/banner5.jpg);">
 				<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
 					<div class="container">
 						<div class="row justify-content-center justify-content-md-end">
@@ -37,7 +37,7 @@
 				</div>
 			</div>
 			<!--/owl-slide-->
-			<div class="owl-slide cover" style="background-image: url(views/img/banner6.jpg);">
+			<div class="owl-slide cover" style="background-image: url(uploads/banner6.jpg);">
 				<div class="opacity-mask d-flex align-items-center">
 					<div class="container">
 						<div class="row justify-content-center justify-content-md-start">
@@ -63,7 +63,7 @@
 	<ul id="banners_grid" class="clearfix">
 		<li>
 			<a href="#0" class="img_container">
-				<img src="views/img/banner3.jpg" data-src="views/img/banner3.jpg" alt="" class="lazy">
+				<img src="uploads/banner3.jpg" data-src="uploads/banner3.jpg" alt="" class="lazy">
 				<div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
 					<h3>ĐỒNG HỒ THỤY SỸ</h3>
 				</div>
@@ -71,7 +71,7 @@
 		</li>
 		<li>
 			<a href="#0" class="img_container">
-				<img src="views/img/banner4.jpg" data-src="views/img/banner4.jpg" alt="" class="lazy">
+				<img src="uploads/banner4.jpg" data-src="uploads/banner4.jpg" alt="" class="lazy">
 				<div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
 					<h3>ĐỒNG HỒ NAM HIỆN ĐẠI</h3>
 				</div>
@@ -79,7 +79,7 @@
 		</li>
 		<li>
 			<a href="#0" class="img_container">
-				<img src="views/img/banner7.jpg" data-src="views/img/banner7.jpg" alt="" class="lazy">
+				<img src="uploads/banner7.jpg" data-src="uploads/banner7.jpg" alt="" class="lazy">
 				<div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
 					<h3>ĐỒNG HỒ NỮ ĐẸP</h3>
 				</div>
@@ -100,7 +100,7 @@
 						<a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
 							<div style="color: black;">
 								<figure>
-									<img class="img-fluid lazy" src="views/img/<?= $item['anhSP1'] ?>" alt="">
+									<img class="img-fluid lazy" src="uploads/<?= $item['anhSP1'] ?>" alt="">
 								</figure>
 								<?= $item['TenSanPham'] ?>
 							</div>
@@ -117,7 +117,7 @@
 	</div>
 	<!-- /container -->
 
-	<div class="featured lazy" data-bg="url(views/img/banner9.jpg)">
+	<div class="featured lazy" data-bg="url(uploads/banner9.jpg)">
 		<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
 			<div class="container margin_60">
 				<div class="row justify-content-center justify-content-md-start">
@@ -149,7 +149,7 @@
 						<a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
 							<div style="color: black;">
 								<figure>
-									<img class="img-fluid lazy" src="views/img/<?= $item['anhSP1'] ?>" alt="">
+									<img class="img-fluid lazy" src="uploads/<?= $item['anhSP1'] ?>" alt="">
 								</figure>
 								<?= $item['TenSanPham'] ?>
 							</div>
@@ -165,7 +165,7 @@
 		</div>
 		<!-- /row -->
 	</div>
-	<div class="featured lazy" data-bg="url(views/img/banner10.jpg)">
+	<div class="featured lazy" data-bg="url(uploads/banner10.jpg)">
 		<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
 			<div class="container margin_60">
 				<div class="row justify-content-center justify-content-md-start">
@@ -194,14 +194,14 @@
 		</div>
 		<div class="owl-carousel owl-theme products_carousel">
 			<?php
-			foreach ($dataSanPham as $item) : ?>
+			foreach ($SanPhamNew as $item) : ?>
 				<div class="item">
 					<div class="grid_item">
 					<span class="ribbon new">New</span>
 						<a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
 							<div style="color: black;">
 								<figure>
-									<img class="img-fluid lazy" src="views/img/<?= $item['anhSP1'] ?>" alt="">
+									<img class="img-fluid lazy" src="uploads/<?= $item['anhSP1'] ?>" alt="">
 								</figure>
 								<?= $item['TenSanPham'] ?>
 							</div>

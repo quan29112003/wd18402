@@ -38,7 +38,6 @@ function authenLogout()
 
 function Qltk()
 {
-    
     require_once PATH_VIEW . 'authen/qltk.php';
 }
 
@@ -47,7 +46,9 @@ function updatetk($id)
     $TaiKhoan = showOne('users', 'id', $id);
 
     if (empty($TaiKhoan)) {
-        e404();
+        $_SESSION['error'] = 'Bạn chưa đăng nhập!';
+        
+        header('Location: ' . BASE_URL . '?act=login');
     }
 
     $title = 'cập nhật tài khoản';
@@ -62,7 +63,7 @@ function updatetk($id)
         ];
 
         update('users', 'id',  $id, $data);
-        $thongbao = "Cap nhat thanh cong";
+        $_SESSION['success'] = 'Cập nhật thành công!';
 
 
         header('Location: ' . BASE_URL . '?act=updatetk&id=' . $id);

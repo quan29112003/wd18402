@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="<?= BASE_URL ?>assets/client/client/css/cart.css">
 
 <main class="bg_gray">
-		<div class="container margin_30">
+	<div class="container margin_30">
 		<div class="page_header">
 			<div class="breadcrumbs">
 				<ul>
@@ -13,130 +13,118 @@
 					<li>Page active</li>
 				</ul>
 			</div>
-			<h1>Đơn hàng của <?=$name?></h1>
+			<h1>Đơn hàng của <?= $hoten_user ?></h1>
 		</div>
 		<?php
-                    					if(isset($_SESSION['user'])){
-                        					extract($_SESSION['user']);
-											}?>
+		if (isset($_SESSION['user'])) {
+			extract($_SESSION['user']);
+		} ?>
 
+		<?php if (isset($_SESSION['success'])) : ?>
+			<div class="success alert alert-success alert-dismissible fade show">
+				<?= $_SESSION['success'] ?>
+			</div>
+			<?php unset($_SESSION['success']); ?>
+		<?php endif; ?>
 
-			<?php if (isset($_SESSION['error'])) : ?>
-                                        <div class="alert alert-danger">
-                                            <?= $_SESSION['error'] ?>
-                                        </div>
-                                        <?php unset($_SESSION['error']); ?>
-                                    <?php endif; ?>
 		<!-- /page_header -->
-			<div class="row">
-				<div class="col-lg-4 col-md-6">
-					<div class="step first">
-						<h3>1. Thông tin nhận hàng</h3>
-					<div class="tab-content checkout">
+		<div class="row">
+			<div class="col-lg-4 col-md-6">
+				<div class="step first">
+					<h3>1. Thông tin nhận hàng</h3>
+					<div class="tab-content checkout box_general summary">
 						<div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="tab_1">
+							<?php foreach ($SanPhamDonHang as $item) ?>
 							<div class="form-group">
 								Email của bạn :
-								<input type="email" class="form-control" value="<?=$email?>"disabled >
+								<input type="email" class="form-control" value="<?= $item['user_email'] ?>" disabled>
 							</div>
 							<div class="form-group">
 								Họ và Tên :
-								<input type="text" class="form-control" value="<?=$hoten_user?>"disabled>
+								<input type="text" class="form-control" value="<?= $item['user_name'] ?>" disabled>
 							</div>
 							<!-- /row -->
 							<div class="form-group">
 								Địa chỉ :
-								<input type="text" class="form-control" value="<?=$diachi?>"disabled>
+								<input type="text" class="form-control" value="<?= $item['user_address'] ?>" disabled>
 							</div>
 							<!-- /row -->
 							<!-- /row -->
 							<div class="form-group">
 								Số điện thoại :
-								<input type="text" class="form-control" value="<?=$tel?>"disabled>
+								<input type="text" class="form-control" value="<?= $item['user_phone'] ?>" disabled>
 							</div>
 							<div id="other_addr_c" class="pt-2">
-							<!-- /row -->
-							<!-- /row -->
+								<!-- /row -->
+								<!-- /row -->
 							</div>
 							<!-- /other_addr_c -->
-					
+
 							<hr>
 						</div>
 						<!-- /tab_1 -->
 						<!-- /tab_2 -->
 					</div>
-					</div>
-					<!-- /step -->
-					<?php
-					if($pttt==0){
-						$thanhtoan = "Nhận hàng trả tiền";
-					}else{
-						$thanhtoan = "Thanh toán QR";
-					}
-					if($ptvc==0){
-						$vanchuyen = "Nhanh";
-					}else{
-						$vanchuyen ="Hỏa tốc";
-					}
-					?>
 				</div>
-				<div class="col-lg-4 col-md-6">
-					<form action="index.php?act=confirmthanhtoan" method="post">
+				<!-- /step -->
+				<?php
+				if ($item['status_payment'] == 0) {
+					$thanhtoan = "Thanh toán khi nhận hàng";
+				} else {
+					$thanhtoan = "Thanh toán Online";
+				}
+				?>
+			</div>
+			<div class="col-lg-4 col-md-6">
+				<form action="index.php?act=confirmthanhtoan" method="post">
 					<div class="step middle payments">
 						<h3>2. Thanh toán và vận chuyển</h3>
 						<h6 class="pb-2">Thanh toán</h6>
-							<ul>
-									<label class="container_radio"><?php echo $thanhtoan?><a href="#0" data-bs-toggle="modal" data-bs-target="#payments_method"></a>
-										<input type="radio" name="ptthanhtoan" value="0" checked>
-										<span class="checkmark"></span>
-									</label>
-							</ul>
-							
-							<h6 class="pb-2">Vận chuyển</h6>
-							
-						
 						<ul>
-									<label class="container_radio"><?php echo $vanchuyen?><a href="#0"  data-bs-toggle="modal" data-bs-target="#payments_method"></a>
-										<input type="radio" name="ptvanchuyen" value="1" checked>
-										<span class="checkmark"></span>
-									</label>
-								
-							</ul>
-						
+							<label class="container_radio"><?php echo $thanhtoan ?><a href="#0" data-bs-toggle="modal" data-bs-target="#payments_method"></a>
+								<input type="radio" name="ptthanhtoan" value="0" checked>
+								<span class="checkmark"></span>
+							</label>
+						</ul>
+
+
 					</div>
 					<!-- /step -->
-					
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="step last">
-						<h3>3. Đơn hàng của bạn</h3>
+
+			</div>
+			<div class="col-lg-4 col-md-6">
+				<div class="step last">
+					<h3>3. Đơn hàng của bạn</h3>
 					<div class="box_general summary">
 						<ul>
 							<?php
 							$tongsoluong = 0;
-							foreach ($DonHangDaMua as $item):
-							$tongsoluong += $item['quantity'];
+							foreach ($SanPhamDonHang as $pro) :
+								$tongsoluong += $pro['quantity'];
 							?>
-								<li class="clearfix"><em><?=$item['quantity']?>x <?=$item['product_name']?></em>  <span style="color:red;">$<?=$item['quantity']*$item['price']?></span></li>
-							<?php endforeach;?>
+								<li class="clearfix"><?= $pro['quantity'] ?>x <?= $pro['product_name'] ?> </li>
+								<li class="clearfix">Giá:<span style="color:red;"> <?= number_format($pro['price']) ?>đ</span></li>
+							<?php endforeach; ?>
 							<!-- <li class="clearfix"><em>1x Armor Air X Fear</em>  <span>$145.00</span></li>
 							<li class="clearfix"><em>2x Armor Air Zoom Alpha</em> <span>$115.00</span></li> -->
 						</ul>
 						<ul>
-							<li class="clearfix"><em><strong>Giá của <?=$tongsoluong?> sản phẩm</strong></em>  <span style="color:red;">$<?=$item['quantity']*$item['price']?></span></li>
-							
+							<li class="clearfix"><em><strong>Giá của <?= $tongsoluong ?> sản phẩm</strong></em> <span style="color:red;"><?= number_format($pro['total_bill']) ?>đ</span></li>
+
 						</ul>
 						</form>
 					</div>
 					<!-- /box_general -->
-					</div>
-					<!-- /step -->
 				</div>
+				<!-- /step -->
 			</div>
-			<!-- /row -->
 		</div>
-		<!-- /container -->
-		<!-- /box_cart -->
-		
-	</main>
-	<!--/main-->
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+	<!-- /box_cart -->
+
+</main>
+<!--/main-->
+
 <?= require_once PATH_VIEW . 'layouts/partials/footer.php' ?>

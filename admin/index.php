@@ -16,9 +16,38 @@ require_file(PATH_MODEL_ADMIN);
 // điều hướng
 $act = $_GET['act'] ?? '/';
 
+$arrRouteNeedAuth = [
+     '/',
+
+     'danh-muc',
+     'danh-muc-detail',
+     'danh-muc-create',
+     'danh-muc-update',
+     'danh-muc-delete',
+
+     'san-pham',
+     'san-pham-detail',
+     'san-pham-create',
+     'san-pham-update',
+     'san-pham-delete',
+     'anh-san-pham',
+     'anh-san-pham-update',
+     'anh-san-pham-delete',
+     
+     'don-hang',
+     'don-hang-detail',
+     'don-hang-update',
+];
+
+middleware_auth_check_admin($act, $arrRouteNeedAuth);
+
 match ($act) {
      '/' => dashboard(),
-     
+
+     // login or logout
+     'login-admin' => LoginAdmin(),
+     'logout-admin' => LogoutAdmin(),
+
      // crud danh mục
      'danh-muc' => DanhMucListAll(),
      'danh-muc-detail' => DanhMucshow($_GET['id']),
@@ -32,6 +61,13 @@ match ($act) {
      'san-pham-create' => SanPhamCreate(),
      'san-pham-update' => SanPhamUpdate($_GET['id']),
      'san-pham-delete' => SanPhamDelete($_GET['id']),
+     'anh-san-pham' => AnhSPCreate($_GET['id']),
+     'anh-san-pham-update' => AnhSPupdate($_GET['id'], $_GET['idAnh']),
+     'anh-san-pham-delete' => AnhSPdelete($_GET['id']),
+
+     'don-hang' => DonHangListAll(),
+     'don-hang-detail' => DonHangShow($_GET['id']),
+     'don-hang-update' => DonHangUpdate($_GET['id']),
 
      // crud user
     'users' => userListAll(),
