@@ -15,6 +15,9 @@ function index(){
 
     $dataSanPham = list2table('anhsanpham', 'sanpham', 'ID_SanPham', 'sanphamID');
 
+    $SanPhamNew = list2table3('sanpham', 'anhsanpham', 'SanPhamID', 'ID_SanPham','SanPhamID');
+
+
     require_once PATH_VIEW . 'layouts/master.php';
 }
 
