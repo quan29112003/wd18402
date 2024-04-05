@@ -5,7 +5,7 @@
 <main class="bg_gray">
 			<div class="container margin_60_35 add_bottom_30">
 				<div class="main_title">
-					<h2>Về chúng tôi - Watchs Store</h2>
+					<h2>Về chúng tôi - WatchStore</h2>
 					<p>Đảm bảo tất cả các sản phẩm chúng tôi bày bán đều có nguồn gốc và chính hãng</p>
 				</div>
 				<div class="row justify-content-center align-items-center">
@@ -56,7 +56,7 @@
 			<div class="bg_white">
 				<div class="container margin_60_35">
 					<div class="main_title">
-						<h2>Why Choose Watchs Store</h2>
+						<h2>Why Choose WatchStore</h2>
 						<p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
 					</div>
 					<div class="row">
