@@ -122,7 +122,7 @@
                             <h3><?= $item['TenSanPham'] ?></h3>
                         </a> -->
                         <div class="price_box">
-                            <span class="new_price">$<?= $item['GiaSP'] ?></span>
+                            <span class="new_price"><?= number_format($item['GiaSP']) ?>đ</span>
                         </div>
                         <ul>
                         </ul>
