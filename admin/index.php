@@ -16,31 +16,31 @@ require_file(PATH_MODEL_ADMIN);
 // điều hướng
 $act = $_GET['act'] ?? '/';
 
-// $arrRouteNeedAuth = [
-//      '/',
+$arrRouteNeedAuth = [
+     '/',
 
-//      'danh-muc',
-//      'danh-muc-detail',
-//      'danh-muc-create',
-//      'danh-muc-update',
-//      'danh-muc-delete',
+     'danh-muc',
+     'danh-muc-detail',
+     'danh-muc-create',
+     'danh-muc-update',
+     'danh-muc-delete',
 
-//      'san-pham',
-//      'san-pham-detail',
-//      'san-pham-create',
-//      'san-pham-update',
-//      'san-pham-delete',
-//      'anh-san-pham',
-//      'anh-san-pham-update',
-//      'anh-san-pham-delete',
+     'san-pham',
+     'san-pham-detail',
+     'san-pham-create',
+     'san-pham-update',
+     'san-pham-delete',
+     'anh-san-pham',
+     'anh-san-pham-update',
+     'anh-san-pham-delete',
      
-//      'don-hang',
-//      'don-hang-detail',
-//      'don-hang-update',
-// ];
+     'don-hang',
+     'don-hang-detail',
+     'don-hang-update',
+];
 
-// middleware_auth_check_admin($act, $arrRouteNeedAuth);
-
+middleware_auth_check_admin($act, $arrRouteNeedAuth);
+// debug($_SESSION['admin']);
 match ($act) {
      '/' => dashboard(),
 
