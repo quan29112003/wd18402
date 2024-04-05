@@ -167,7 +167,7 @@ function SanPhamUpdate($id)
         update('sanpham','SanPhamID', $id, $data);
 
         // ở lại trang update
-        header('Location: ' . BASE_URL_ADMIN . '?act=san-pham-update&id=' . $id);
+        header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
 
         exit;
     }

@@ -1,8 +1,10 @@
+<?= require_once PATH_VIEW . 'layouts/partials/header.php' ?>
+
 <main>
     <div class="container margin_30">
-        <div class="countdown_inner">
+        <!-- <div class="countdown_inner">
             <div class="countdown"></div>
-        </div>
+        </div> -->
         <div class="row">
             <div class="col-lg-6 magnific-gallery">
                 <p>
@@ -25,7 +27,7 @@
                             <div class="price_main"><span class="new_price">Giá: <?= number_format($dataSanPham['GiaSP']) ?>đ</span></div>
                         </div>
                         <div class="col-lg-4 col-md-6">
-                            <a href="<?= BASE_URL . "?act=cart-add&productID=" .$dataSanPham['SanPhamID'] ?>"><button class="btn_1">Thêm vào giỏ hàng </button></a>
+                            <a href="<?= BASE_URL . "?act=cart-add&productID=" . $dataSanPham['SanPhamID'] ?>"><button class="btn_1">Thêm vào giỏ hàng </button></a>
                             </form>
                         </div>
                     </div>
@@ -48,7 +50,7 @@
         <div class="container">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
-                    <a id="tab-A" href="#pane-A" class="nav-link active" data-bs-toggle="tab" role="tab">Tổng Quát Sản Phẩm</a>
+                    <a id="tab-A" href="#pane-A" class="nav-link active" data-bs-toggle="tab" role="tab">Thông tin Sản Phẩm</a>
                 </li>
                 <li class="nav-item">
                     <a id="tab-B" href="#pane-B" class="nav-link" data-bs-toggle="tab" role="tab">Bình luận</a>
@@ -72,9 +74,11 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h3>Tổng quan</h3>
-                                    <?php echo '<p>' . $mota . '</p>' ?>
+                                    <h3>Chi tiết</h3>
+                                    <p><?= $dataSanPham['MoTa'] ?></p>
                                 </div>
+                                
+
                             </div>
                         </div>
                     </div>
@@ -87,42 +91,6 @@
                             </a>
                         </h5>
                     </div>
-                    <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">
-                        <div class="card-body">
-                            <div class="row justify-content-between">
-                                <?php
-                                foreach ($binhluan_cung_sp as $binhluan_cung_sp) {
-                                    extract($binhluan_cung_sp);
-                                    echo '<div class="col-lg-6">
-	                                    <div class="review_content">
-	                                        <div class="clearfix add_bottom_10">
-	                                            <span class="rating"><h4 style= color:red;>' . $user . '</h4></span>
-	                                            <em>' . $ngaybinhluan . '</em>
-	                                        </div>
-	                                        <h4>"' . $tieude . '"</h4>
-	                                        <p>' . $noidung . '</p>
-	                                    </div>
-	                                </div>';
-                                } ?>
-                                <!-- <div class="col-lg-6">
-	                                    <div class="review_content">
-	                                        <div class="clearfix add_bottom_10">
-	                                            <span class="rating"><h4 style= color:red;>Commpletely satisfied</h4></span>
-	                                            <em>Published 54 minutes ago</em>
-	                                        </div>
-	                                        <h4>"Commpletely satisfied"</h4>
-	                                        <p>Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod scaevola sea. Et nec tantas accusamus salutatus, sit commodo veritus te, erat legere fabulas has ut. Rebum laudem cum ea, ius essent fuisset ut. Viderer petentium cu his.</p>
-	                                    </div>
-	                                </div> -->
-                            </div>
-                            <!-- /row -->
-                            <!-- /row -->
-                            <p class="text-end"><?php
-                                                extract($onesp);
-                                                echo '<a href="index.php?act=binhluan&&idsp=' . $id . '" class="btn_1">Bình Luận</a>' ?></p>
-                        </div>
-                        <!-- /card-body -->
-                    </div>
                 </div>
             </div>
             <!-- /tab-content -->
@@ -131,28 +99,25 @@
 
     <div class="container margin_60_35">
         <div class="main_title">
-            <h2>Sản phẩm cùng hãng</h2>
+            <h2>Sản phẩm cùng loại</h2>
             <span>Products</span>
-            <p>Sản phẩm cùng hãng </p>
+            <p>Sản phẩm cùng loại </p>
         </div>
         <div class="owl-carousel owl-theme products_carousel">
             <?php
-            foreach ($sp_cung_loai as $sp_cung_loai) :
-                extract($sp_cung_loai);
-                $linksp = "index.php?act=sanphamct&idsp=" . $id;
-                $hinhpath = "../upload/" . $img; ?>
+            foreach ($SanPhamCungLoai as $item) : ?>
                 <div class="item">
                     <div class="grid_item">
                         <figure>
-                            <a href="<?= $linksp ?>">
-                                <img class="owl-lazy" src="<?= $hinhpath ?>" data-src="<?= $hinhpath ?>" alt="">
+                            <a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
+                                <img class="owl-lazy" src="uploads/<?= $item['anhSP1'] ?>" alt="">
                             </a>
                         </figure>
-                        <a href="<?= $linksp ?>">
-                            <h3><?= $name ?></h3>
+                        <a href="">
+                            <h3><?= $item['TenSanPham'] ?></h3>
                         </a>
                         <div class="price_box">
-                            <span class="new_price">$<?= $price ?></span>
+                            <span class="new_price">$<?= $item['GiaSP'] ?></span>
                         </div>
                         <ul>
                         </ul>
@@ -160,7 +125,7 @@
                         </form>
                     </div>
                 </div>
-            <?php endforeach; ?>
+            <?php endforeach ?>
             <!-- <div class="item">
 	                <div class="grid_item">
 	                    <span class="ribbon new">New</span>
@@ -265,3 +230,4 @@
         });
     }
 </script>
+<!-- footer --><?= require_once PATH_VIEW . 'layouts/partials/footer.php' ?>

@@ -104,6 +104,26 @@ if (!function_exists('listAll')) {
     }
 }
 
+if (!function_exists('listMany')) {
+    function listMany($tableName1, $tableName2, $Name1, $Name2, $idName, $id)
+    {
+        try {
+            $sql = "SELECT * FROM $tableName1 JOIN $tableName2 ON $tableName1.$Name1 = $tableName2.$Name2 WHERE $tableName1.$idName = :id";
+
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
 
 // lấy ra 1 dữ liệu
 if (!function_exists('showOne')) {
