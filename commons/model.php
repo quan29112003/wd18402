@@ -91,7 +91,7 @@ if (!function_exists('listAll')) {
     function listAll($tableName)
     {
         try {
-            $sql = "SELECT * FROM $tableName";
+            $sql = "SELECT * FROM $tableName "; 
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 
@@ -150,7 +150,7 @@ if (!function_exists('showOne2table')) {
     function showOne2table($tableName1, $tableName2, $Name1, $Name2, $idName, $id)
     {
         try {
-            $sql = "SELECT * FROM $tableName1 JOIN $tableName2 ON $tableName1.$Name1 = $tableName2.$Name2 WHERE $tableName1.$idName = :id";
+            $sql = "SELECT * FROM $tableName1 JOIN $tableName2 ON $tableName1.$Name1 = $tableName2.$Name2 WHERE $tableName1.$idName = :id LIMIT 1";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 

@@ -56,7 +56,6 @@ match ($act) {
 
     'qltk' => Qltk(),
     'updatetk' => updateTk($_GET['id']),
-
     'kiemtradonhang' => KiemTraDonHang($_GET['id']),
     'xemspdonhang' => XemSPDonHang($_GET['id']),
 
@@ -64,5 +63,7 @@ match ($act) {
 
     'gioithieu' => GioiThieu(),
 };
+
+
 
 require_once './commons/disconnect-db.php';

@@ -38,7 +38,6 @@ function authenLogout()
 
 function Qltk()
 {
-    
     require_once PATH_VIEW . 'authen/qltk.php';
 }
 

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // require file trong commons
 require_once '../commons/env.php';
 require_once '../commons/helper.php';
@@ -16,15 +16,52 @@ require_file(PATH_MODEL_ADMIN);
 // điều hướng
 $act = $_GET['act'] ?? '/';
 
+// $arrRouteNeedAuth = [
+//      '/',
+
+//      'danh-muc',
+//      'danh-muc-detail',
+//      'danh-muc-create',
+//      'danh-muc-update',
+//      'danh-muc-delete',
+
+//      'san-pham',
+//      'san-pham-detail',
+//      'san-pham-create',
+//      'san-pham-update',
+//      'san-pham-delete',
+//      'anh-san-pham',
+//      'anh-san-pham-update',
+//      'anh-san-pham-delete',
+     
+//      'don-hang',
+//      'don-hang-detail',
+//      'don-hang-update',
+// ];
+
+// middleware_auth_check_admin($act, $arrRouteNeedAuth);
+
 match ($act) {
      '/' => dashboard(),
-     
+
+     // login or logout
+     'login-admin' => LoginAdmin(),
+     'logout-admin' => LogoutAdmin(),
+
      // crud danh mục
      'danh-muc' => DanhMucListAll(),
      'danh-muc-detail' => DanhMucshow($_GET['id']),
      'danh-muc-create' => DanhMuccreate(),
      'danh-muc-update' => DanhMucupdate($_GET['id']),
      'danh-muc-delete' => DanhMucdelete($_GET['id']),
+    '/' => dashboard(),
+
+    // crud danh mục
+    'danh-muc' => DanhMucListAll(),
+    'danh-muc-detail' => DanhMucshow($_GET['id']),
+    'danh-muc-create' => DanhMuccreate(),
+    'danh-muc-update' => DanhMucupdate($_GET['id']),
+    'danh-muc-delete' => DanhMucdelete($_GET['id']),
 
      // crud sản phẩm
      'san-pham' => SanPhamListAll(),
@@ -39,8 +76,20 @@ match ($act) {
      'don-hang' => DonHangListAll(),
      'don-hang-detail' => DonHangShow($_GET['id']),
      'don-hang-update' => DonHangUpdate($_GET['id']),
+    // crud sản phẩm
+    'san-pham' => SanPhamListAll(),
+    'san-pham-detail' => SanPhamShow($_GET['id']),
+    'san-pham-create' => SanPhamCreate(),
+    'san-pham-update' => SanPhamUpdate($_GET['id']),
+    'san-pham-delete' => SanPhamDelete($_GET['id']),
 
-
+    // crud user
+    'users' => userListAll(),
+    'user-detail' => userShowOne($_GET['id']),
+    'user-create' => userCreate(),
+    'user-update' => userUpdate($_GET['id']),
+    'user-delete' => userDelete($_GET['id']),
 };
 
 require_once '../commons/disconnect-db.php';
+
