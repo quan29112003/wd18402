@@ -29,6 +29,9 @@ function searchProduct()
     require_once PATH_VIEW . 'listdoc.php';
 }
 
+function GioiThieu() {
+    require_once PATH_VIEW . 'gioithieu.php';
+}
 
 // luồng mvc 1: vào index
 // vào index -> được điều hướng đến hàm xử lý logic trong controller tương ứng

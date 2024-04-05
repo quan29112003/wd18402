@@ -61,6 +61,8 @@ match ($act) {
     'xemspdonhang' => XemSPDonHang($_GET['id']),
 
     'search' => searchProduct(),
+
+    'gioithieu' => GioiThieu(),
 };
 
 require_once './commons/disconnect-db.php';

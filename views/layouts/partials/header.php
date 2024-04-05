@@ -77,7 +77,7 @@
 										<a href="index.php" class="show-submenu">Trang Chủ</a>
 									</li>
 									<li class="submenu">
-										<a href="index.php?act=sanpham" class="show-submenu">Danh Mục</a>
+										<a href="#" class="show-submenu">Danh Mục</a>
 										<ul>
 											<?php foreach ($dataDanhMuc as $item) : ?>
 												<li><a href="<?= BASE_URL ?>?act=listdoc&id=<?= $item['DanhMucID'] ?>"><?= $item['TenDanhMuc'] ?></a></li>

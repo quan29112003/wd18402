@@ -65,7 +65,7 @@ function DanhMucupdate($id)
 
         update('danhmuc', 'DanhMucID',  $id, $data);
 
-        header('Location: ' . BASE_URL_ADMIN . '?act=danh-muc-update&id=' . $id);
+        header('Location: ' . BASE_URL_ADMIN . '?act=danh-muc');
 
         exit;
     }
