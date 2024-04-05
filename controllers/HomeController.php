@@ -20,11 +20,13 @@ function index(){
 
 function searchProduct()
 {
-    $keyword = $_GET['keyword'];
-    $cate_id = $_GET['catalog'];
+    // $keyword = $_GET['keyword'];
+    // $cate_id = $_GET['catalog'];
 
-    $products = searchProductInCatalogue($keyword, $cate_id);
-    $catalogues = listAll('danhmuc');
+    
+    $dataDanhMuc = listAll('danhmuc');
+
+    $data = searchProductInCatalogue();
     $list_of_price = list_of_price();
     require_once PATH_VIEW . 'listdoc.php';
 }

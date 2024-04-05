@@ -48,7 +48,7 @@ if (empty($_SESSION['cart'])) {
 						<tr>
 							<td>
 								<div class="thumb_cart">
-									<img src="views/img/<?= $item['anhSP1'] ?>" width="20%" class="lazy" alt="Image">
+									<img src="uploads/<?= $item['anhSP1'] ?>" width="20%" class="lazy" alt="Image">
 
 								</div>
 								<div class="item_cart"><?= $item['TenSanPham'] ?></div>
@@ -82,8 +82,8 @@ if (empty($_SESSION['cart'])) {
 							</td>
 
 							<td class=" options">
-										<input type="hidden" name="idsp" value="'.$idsp.'">
-										</form>
+								<input type="hidden" name="idsp" value="'.$idsp.'">
+								</form>
 							</td>
 						</tr>
 					<?php endforeach ?>

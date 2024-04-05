@@ -12,7 +12,7 @@
 					</ul>
 				</div>
 			</div>
-		</div><img src="views/img/banner10.jpg" class="img-fluid" alt="">
+		</div><img src="uploads/banner10.jpg" class="img-fluid" alt="">
 	</div>
 	<!-- /top_banner -->
 	<div id="stick_here"></div>
@@ -23,13 +23,13 @@
 		</aside>
 		<!-- /col -->
 		<div class="col-lg-9">
-			<?php
+			<!-- <?php
 			foreach ($data as $item) : ?>
 				<div class="row row_item">
 					<div class="col-sm-4">
 						<figure>
 							<a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
-								<img class="img-fluid lazy" src="views/img/<?= $item['anhSP1'] ?>" data-src="views/img/<?= $item['anhSP1'] ?>" alt="">
+								<img class="img-fluid lazy" src="uploads/<?= $item['anhSP1'] ?>" data-src="uploads/<?= $item['anhSP1'] ?>" alt="">
 							</a>
 						</figure>
 					</div>
@@ -39,7 +39,6 @@
 						</a>
 						<p><?= $item['SoLuong'] ?></p>
 						<p><?= $item['MoTa'] ?></p>
-						<p>danh mục: <?= $item['TenDanhMuc'] ?></p>
 						<div class="price_box">
 							<span class="new_price">$<?= $item['GiaSP'] ?></span>
 						</div>
@@ -49,15 +48,15 @@
 						</ul>
 					</div>
 				</div>
-			<?php endforeach ?>
+			<?php endforeach ?> -->
 			
-			<?php foreach ($products as $item) : ?>
+			<?php foreach ($data as $item) : ?>
 
 				<div class="row row_item">
 					<div class="col-sm-4">
 						<figure>
 							<a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
-								<img class="img-fluid lazy" src="views/img/<?= $item['anhSP1'] ?>" data-src="views/img/<?= $item['anhSP1'] ?>" alt="">
+								<img class="img-fluid lazy" src="uploads/<?= $item['anhSP1'] ?>" data-src="uploads/<?= $item['anhSP1'] ?>" alt="">
 							</a>
 						</figure>
 					</div>
@@ -67,7 +66,6 @@
 						</a>
 						<p>Số lượng: <?= $item['SoLuong'] ?></p>
 						<p><?= $item['MoTa'] ?></p>
-						<p>danh mục: <?= $item['TenDanhMuc'] ?></p>
 						<div class="price_box">
 							<span class="new_price"><?= number_format($item['GiaSP']) ?>đ</span>
 						</div>

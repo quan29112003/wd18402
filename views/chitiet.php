@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-6 magnific-gallery">
                 <p>
-                    <img src="views/img/<?= $dataSanPham['anhSP1'] ?>" alt="" class="img-fluid">
+                    <img src="uploads/<?= $dataSanPham['anhSP1'] ?>" alt="" class="img-fluid">
                 </p>
             </div>
             <div class="col-lg-6" id="sidebar_fixed">

@@ -2,6 +2,9 @@
 
 function orderCheckout()
 {
+    
+    $dataDanhMuc = listAll('danhmuc');
+    
     require_once PATH_VIEW . 'giohang/thanhtoan.php';
 }
 
@@ -54,6 +57,8 @@ function KiemTraDonHang($id) {
     // $DonHangDaMua = showOne2table('order_items','orders','order_id','id','order_id',$id);
 
     //  $DonHangDaMua = list2table('orders','order_items','id','order_id',$id) ;
+    
+    $dataDanhMuc = listAll('danhmuc');
     $DonHangDaMua = list3table2('orders','users','order_items','user_id','id','id','order_id','user_id',$id);
 
 
