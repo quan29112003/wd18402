@@ -27,17 +27,27 @@
 
                         <!-- form them moi -->
                         <form action="" method="POST"><!--begin::Body-->
+                            <?php if (isset($_SESSION['errors'])) :  ?>
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        <?php foreach ($_SESSION['errors'] as $error) : ?>
+                                            <li><?= $error ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                                <?php unset($_SESSION['errors']); ?>
+                            <?php endif; ?>
                             <div class="card-body">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Tên sản phẩm</label>
-                                    <input type="text" class="form-control" name="TenSanPham">
+                                    <input type="text" class="form-control" name="TenSanPham" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['TenSanPham'] : null  ?>">
                                 </div>
 
                                 <div class="mb3">
                                     <label for="" class="form-label">danh muc san pham</label>
                                     <select name="ID_DanhMuc" id="" class="form-select">
-                                        <?php foreach($dataDanhMuc as $value): ?>
-                                        <option value="<?=$value['DanhMucID'] ?>"><?=$value['TenDanhMuc'] ?></option>
+                                        <?php foreach ($dataDanhMuc as $value) : ?>
+                                            <option value="<?= $value['DanhMucID'] ?>"><?= $value['TenDanhMuc'] ?></option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>
@@ -45,12 +55,12 @@
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Giá sản phẩm</label>
-                                    <input type="text" class="form-control" name="GiaSP">
+                                    <input type="text" class="form-control" name="GiaSP" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['GiaSP'] : null  ?>">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">số lượng</label>
-                                    <input type="text" class="form-control" name="SoLuong">
+                                    <input type="text" class="form-control" name="SoLuong" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['SoLuong'] : null  ?>">
                                 </div>
 
                                 <div class="mb-3">

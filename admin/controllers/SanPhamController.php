@@ -41,13 +41,22 @@ function SanPhamCreate()
     if (!empty($_POST)) {
 
         $data = [
-            'ID_DanhMuc' => $_POST['ID_DanhMuc'],
-            'TenSanPham' => $_POST['TenSanPham'],
-            'GiaSP' => $_POST['GiaSP'],
-            'SoLuong' => $_POST['SoLuong'],
-            'MoTa' => $_POST['MoTa'],
+            'ID_DanhMuc' => $_POST['ID_DanhMuc'] ?? null,
+            'TenSanPham' => $_POST['TenSanPham'] ?? null,
+            'GiaSP' => $_POST['GiaSP'] ?? null,
+            'SoLuong' => $_POST['SoLuong'] ?? null,
+            'MoTa' => $_POST['MoTa'] ?? null,
         ];
 
+        
+        $errors = validateCreateProduct($data);
+
+        if (!empty($errors)) {
+            $_SESSION['errors'] = $errors;
+            $_SESSION['data'] = $data;
+            header('Location: ' . BASE_URL_ADMIN . '?act=san-pham-create');
+            exit();
+        }
         // thêm data vào bảng sản phẩm
         insert('sanpham', $data);
 
@@ -59,6 +68,23 @@ function SanPhamCreate()
 
 
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
+}
+
+function validateCreateProduct($data) {
+    $errors = [];
+    if(empty($data['TenSanPham'])) {
+        $errors[] = 'Trường tên sản phẩm là bắt buộc';
+    }
+
+    if(empty($data['GiaSP'])) {
+        $errors[] = 'Trường giá sản phẩm là bắt buộc';
+    }
+
+    if(empty($data['SoLuong'])) {
+        $errors[] = 'Trường số lượng sản phẩm là bắt buộc';
+    }
+    
+    return $errors;
 }
 
 // thêm mới ảnh sản phẩm
