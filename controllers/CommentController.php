@@ -3,8 +3,8 @@
 function BinhLuan($id)
 {
 
-    // $BinhLuan = listMany('binhluan','sanpham','idsanpham','SanPhamID','idsanpham',$id);
-    $BinhLuan = showOne2('binhluan','idsanpham',$id);
+    $BinhLuan = showOne2table('binhluan','sanpham','idsanpham','SanPhamID','idsanpham',$id);
+    // $BinhLuan = showOne2('binhluan','idsanpham',$id);
     // debug($BinhLuan);
     if (!empty($_POST)) {
 
@@ -13,7 +13,6 @@ function BinhLuan($id)
 
         $data = [
             'idsanpham' => $_POST['idsanpham'],
-            'tieude' => $_POST['tieude'],
             'noidung' => $_POST['noidung'],
             'ngaybinhluan' => $ngaybinhluan, // Assign the variable here
             'username' => $_POST['username']

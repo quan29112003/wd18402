@@ -82,6 +82,8 @@ match ($act) {
     'san-pham-create' => SanPhamCreate(),
     'san-pham-update' => SanPhamUpdate($_GET['id']),
     'san-pham-delete' => SanPhamDelete($_GET['id']),
+    'san-pham-an' => SanPhamHide($_GET['id']),
+    'san-pham-hien' => SanPhamHien($_GET['id']),
 
     // crud user
     'users' => userListAll(),
@@ -89,6 +91,11 @@ match ($act) {
     'user-create' => userCreate(),
     'user-update' => userUpdate($_GET['id']),
     'user-delete' => userDelete($_GET['id']),
+
+    'binh-luan' => binhluanListAll(),
+    'binh-luan-an' => BinhLuanHide($_GET['id']),
+    'binh-luan-hien' => BinhLuanHien($_GET['id']),
+    'binh-luan-detail' => BinhLuanDetail($_GET['id'])
 };
 
 require_once '../commons/disconnect-db.php';

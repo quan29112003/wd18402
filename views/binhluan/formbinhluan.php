@@ -12,7 +12,7 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-8">
 					<div class="write_review">
-						<h1>Bình luận về </h1>
+						<h1>Bình luận về <?= $BinhLuan['TenSanPham']?></h1>
 						<div class="rating_submit">
 							<div class="form-group">
 							<label class="d-block">Đánh giá cảm nghĩ của bạn</label>
@@ -23,10 +23,6 @@
 
 						<input type="hidden" value="<?= $_GET['id']?>" name="idsanpham" id="">
 
-						<div class="form-group">
-							<label>Tiêu đề</label>
-							<input class="form-control" type="text" name="tieude" placeholder="Tiêu đề sản phẩm...">
-						</div>
 						<div class="form-group">
 							<label>Bình luận</label>
 							<textarea class="form-control" style="height: 180px;" placeholder="Cảm nghĩ của bạn về sản phẩm.." name="noidung"></textarea>

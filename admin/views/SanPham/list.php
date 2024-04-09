@@ -26,7 +26,8 @@
                                         <th>tên sản phẩm</th>
                                         <th>giá sản phẩm</th>
                                         <th>số lượng</th>
-                                        <th>mô tả</th>
+                                        <th style="width: 400px">mô tả</th>
+                                        <th>IsHidden</th>
                                         <th>
                                             <a href="<?= BASE_URL_ADMIN . '?act=san-pham-create' ?>" class="btn btn-primary">
                                                 <p>thêm mới sản phẩm</p>
@@ -60,7 +61,8 @@
 
                                             <td><?= $item['SoLuong'] ?></td>
 
-                                            <td><?= $item['MoTa'] ?></td>
+                                            <td style="width: 400px"><?= $item['MoTa'] ?></td>
+                                            <td><?= $item['IsHidden'] ?></td>
                                             <td>
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -68,6 +70,12 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <a href="<?= BASE_URL_ADMIN ?>?act=san-pham-delete&id=<?= $item['SanPhamID'] ?>" onclick="return confirm('Bạn có chắc muốn xóa không')" class="btn btn-danger btn-block mb-2">Xóa</a>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <a href="<?= BASE_URL_ADMIN ?>?act=san-pham-an&id=<?= $item['SanPhamID'] ?>" onclick="return confirm('Bạn có chắc muốn ẩn không')" class="btn btn-danger btn-block mb-2">Ẩn</a>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <a href="<?= BASE_URL_ADMIN ?>?act=san-pham-hien&id=<?= $item['SanPhamID'] ?>" onclick="return confirm('Bạn có chắc muốn hiện không')" class="btn btn-warning btn-block mb-2">Hiện</a>
                                                     </div>
                                                 </div>
                                                 <div class="row">

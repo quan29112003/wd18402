@@ -92,7 +92,7 @@
                     <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">
                         <div class="card-body">
                             <div class="row justify-content-between">
-                                <?php foreach ($SanPhamBinhLuan as $binhluan) : ?>
+                                <?php foreach ($SanPhamBinhLuan as $binhluan) : if ($binhluan['Hidden'] != 1) :?>
                                     <div class="col-lg-6">
                                         <div class="review_content">
                                             <div class="clearfix add_bottom_10">
@@ -119,17 +119,17 @@
 
                                                     if ($hours_difference == 0) {
                                                         if ($minutes_difference == 0) {
-                                                            $formatted_ngaybinhluan = "Just now";
+                                                            $formatted_ngaybinhluan = "Vừa xong";
                                                         } else {
-                                                            $formatted_ngaybinhluan = "$minutes_difference minutes ago";
+                                                            $formatted_ngaybinhluan = "$minutes_difference phút trước";
                                                         }
                                                     } else {
-                                                        $formatted_ngaybinhluan = "$hours_difference hours ago";
+                                                        $formatted_ngaybinhluan = "$hours_difference giờ trước";
                                                     }
                                                 } elseif ($days_difference == 1) {
-                                                    $formatted_ngaybinhluan = "1 day ago";
+                                                    $formatted_ngaybinhluan = "1 ngày trước";
                                                 } else {
-                                                    $formatted_ngaybinhluan = "$days_difference days ago";
+                                                    $formatted_ngaybinhluan = "$days_difference ngày trước";
                                                 }
                                                 ?>
                                                 <em><?= $formatted_ngaybinhluan ?></em>
@@ -137,7 +137,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                <?php endforeach ?>
+                                <?php endif; endforeach; ?>
                             </div>
                             <!-- /row -->
                             <p class="text-end">
@@ -161,7 +161,7 @@
         </div>
         <div class="owl-carousel owl-theme products_carousel">
             <?php
-            foreach ($SanPhamCungLoai as $item) : ?>
+            foreach ($SanPhamCungLoai as $item) : if ($item['IsHidden'] != 1) :?>
                 <div class="item">
                     <div class="grid_item">
                         <div style="color: black;">
@@ -185,7 +185,7 @@
                         </form>
                     </div>
                 </div>
-            <?php endforeach ?>
+            <?php endif; endforeach; ?>
         </div>
         <!-- /products_carousel -->
     </div>
