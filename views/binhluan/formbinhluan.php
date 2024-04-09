@@ -21,7 +21,7 @@
 						</div>
 						<!-- /rating_submit -->
 
-						<input type="hidden" value="<?= $BinhLuan['idsanpham']?>" name="idsanpham" id="">
+						<input type="hidden" value="<?= $_GET['id']?>" name="idsanpham" id="">
 
 						<div class="form-group">
 							<label>Tiêu đề</label>

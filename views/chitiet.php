@@ -141,7 +141,7 @@
                             </div>
                             <!-- /row -->
                             <p class="text-end">
-                                <a href="<?= BASE_URL . '?act=binhluan&id=' . $binhluan['SanPhamID'] ?>"><button class="btn btn_1">Bình luận</button></a>
+                                <a href="<?= BASE_URL . '?act=binhluan&id=' . $dataSanPham['SanPhamID'] ?>"><button class="btn btn_1">Bình luận</button></a>
                             </p>
                         </div>
                         <!-- /card-body -->
