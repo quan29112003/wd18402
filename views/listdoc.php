@@ -24,7 +24,7 @@
 		<!-- /col -->
 		<div class="col-lg-9">
 			<!-- <?php
-			foreach ($data as $item) : ?>
+			foreach ($data as $item) :  if ($item['IsHidden'] != 1) :?>
 				<div class="row row_item">
 					<div class="col-sm-4">
 						<figure>
@@ -48,9 +48,9 @@
 						</ul>
 					</div>
 				</div>
-			<?php endforeach ?> -->
+			<?php endif; endforeach; ?> -->
 			
-			<?php foreach ($data as $item) : ?>
+			<?php foreach ($data as $item) :  if ($item['IsHidden'] != 1) :?>
 
 				<div class="row row_item">
 					<div class="col-sm-4">
@@ -75,7 +75,7 @@
 						</ul>
 					</div>
 				</div>
-            <?php endforeach; ?>
+            <?php endif; endforeach; ?>
 			<!-- <div class="row row_item">
 	                    <div class="col-sm-4">
 	                        <figure>

@@ -30,6 +30,11 @@
                                 <p>Users</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?= BASE_URL_ADMIN . '?act=binh-luan' ?>" class="nav-link"><i class="nav-icon bi bi-circle"></i>
+                                <p>Bình luận</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul><!--end::Sidebar Menu-->

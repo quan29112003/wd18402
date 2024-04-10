@@ -94,28 +94,30 @@
 			<h2>Các thương hiệu hiện đã có tại cửa hàng</h2>
 		</div>
 		<div class="owl-carousel owl-theme products_carousel">
-			<?php
-			foreach ($dataSanPham as $item) : ?>
-				<div class="item">
-					<div class="grid_item">
-						<a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
-							<div style="color: black;">
-								<figure>
-									<img class="img-fluid lazy" src="uploads/<?= $item['anhSP1'] ?>" alt="">
-								</figure>
-								<?= $item['TenSanPham'] ?>
-							</div>
-							<div class="price_box">
-								<span class="new_price"><?= number_format($item['GiaSP']) ?>đ</span>
-							</div>
-						</a>
-						<a href="<?= BASE_URL . "?act=cart-add&productID=" . $item['SanPhamID'] ?>">
-							<abutton class="btn_1">Thêm vào giỏ hàng</button>
-						</a>
+			<?php foreach ($dataSanPham as $item) :
+				// Kiểm tra nếu sản phẩm không bị ẩn
+				if ($item['IsHidden'] != 1) : ?>
+					<div class="item">
+						<div class="grid_item">
+							<a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
+								<div style="color: black;">
+									<figure>
+										<img class="img-fluid lazy" src="uploads/<?= $item['anhSP1'] ?>" alt="">
+									</figure>
+									<?= $item['TenSanPham'] ?>
+								</div>
+								<div class="price_box">
+									<span class="new_price"><?= number_format($item['GiaSP']) ?>đ</span>
+								</div>
+							</a>
+							<a href="<?= BASE_URL . "?act=cart-add&productID=" . $item['SanPhamID'] ?>">
+								<abutton class="btn_1">Thêm vào giỏ hàng</button>
+							</a>
+						</div>
 					</div>
-				</div>
-			<?php endforeach; ?>
+			<?php endif; endforeach; ?>
 		</div>
+
 		<!-- /products_carousel -->
 	</div>
 	<!-- /container -->
@@ -145,25 +147,28 @@
 			<h2>Sản phẩm được yêu thích</h2>
 		</div>
 		<div class="owl-carousel owl-theme products_carousel">
-			<?php
-			foreach ($dataSanPham as $item) : ?>
-				<div class="item">
-					<div class="grid_item">
-						<a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
-							<div style="color: black;">
-								<figure>
-									<img class="img-fluid lazy" src="uploads/<?= $item['anhSP1'] ?>" alt="">
-								</figure>
-								<?= $item['TenSanPham'] ?>
-							</div>
-							<div class="price_box">
-								<span class="new_price"><?= number_format($item['GiaSP']) ?>đ</span>
-							</div>
-						</a>
-						<a href="<?= BASE_URL . "?act=cart-add&productID=" . $item['SanPhamID'] ?>"><button class="btn_1">Thêm vào giỏ hàng</button></a>
+		<?php foreach ($dataSanPham as $item) :
+				// Kiểm tra nếu sản phẩm không bị ẩn
+				if ($item['IsHidden'] != 1) : ?>
+					<div class="item">
+						<div class="grid_item">
+							<a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
+								<div style="color: black;">
+									<figure>
+										<img class="img-fluid lazy" src="uploads/<?= $item['anhSP1'] ?>" alt="">
+									</figure>
+									<?= $item['TenSanPham'] ?>
+								</div>
+								<div class="price_box">
+									<span class="new_price"><?= number_format($item['GiaSP']) ?>đ</span>
+								</div>
+							</a>
+							<a href="<?= BASE_URL . "?act=cart-add&productID=" . $item['SanPhamID'] ?>">
+								<abutton class="btn_1">Thêm vào giỏ hàng</button>
+							</a>
+						</div>
 					</div>
-				</div>
-			<?php endforeach; ?>
+			<?php endif; endforeach; ?>
 			<!-- /col -->
 		</div>
 		<!-- /row -->
@@ -196,26 +201,28 @@
 			<p>Sản phẩm mới về!!</p>
 		</div>
 		<div class="owl-carousel owl-theme products_carousel">
-			<?php
-			foreach ($SanPhamNew as $item) : ?>
-				<div class="item">
-					<div class="grid_item">
-						<span class="ribbon new">New</span>
-						<a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
-							<div style="color: black;">
-								<figure>
-									<img class="img-fluid lazy" src="uploads/<?= $item['anhSP1'] ?>" alt="">
-								</figure>
-								<?= $item['TenSanPham'] ?>
-							</div>
-							<div class="price_box">
-								<span class="new_price"><?= number_format($item['GiaSP']) ?>đ</span>
-							</div>
-						</a>
-						<a href="<?= BASE_URL . "?act=cart-add&productID=" . $item['SanPhamID'] ?>"><button class="btn_1">Thêm vào giỏ hàng</button></a>
+		<?php foreach ($SanPhamNew as $item) :
+				// Kiểm tra nếu sản phẩm không bị ẩn
+				if ($item['IsHidden'] != 1) : ?>
+					<div class="item">
+						<div class="grid_item">
+							<a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
+								<div style="color: black;">
+									<figure>
+										<img class="img-fluid lazy" src="uploads/<?= $item['anhSP1'] ?>" alt="">
+									</figure>
+									<?= $item['TenSanPham'] ?>
+								</div>
+								<div class="price_box">
+									<span class="new_price"><?= number_format($item['GiaSP']) ?>đ</span>
+								</div>
+							</a>
+							<a href="<?= BASE_URL . "?act=cart-add&productID=" . $item['SanPhamID'] ?>">
+								<abutton class="btn_1">Thêm vào giỏ hàng</button>
+							</a>
+						</div>
 					</div>
-				</div>
-			<?php endforeach; ?>
+			<?php endif; endforeach; ?>
 		</div>
 		<!-- /products_carousel -->
 	</div>
