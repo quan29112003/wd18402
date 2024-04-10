@@ -68,15 +68,19 @@
 
                                                 <form action="index.php?act=don-hang-update&id=<?= $item['order_id'] ?>" class="d-flex" enctype="multipart/form-data" method="post">
                                                     <td> <!-- <label for="" class="form-label">Trạng thái</label> -->
-                                                        <select name="status_delivery" id="" class="form-select">
+                                                        <?php if ($item['status_delivery'] == -1) : ?>
+                                                            <span>Đã hủy</span>
+                                                        <?php else : ?>
+                                                            <select name="status_delivery" id="" class="form-select">
 
-                                                            <option value="0" <?php if ($item['status_delivery'] == 0) echo "selected"; ?>>Chờ xác nhận</option>
-                                                            <option value="1" <?php if ($item['status_delivery'] == 1) echo "selected"; ?>>Chờ lấy hàng</option>
-                                                            <option value="2" <?php if ($item['status_delivery'] == 2) echo "selected"; ?>>Chờ giao hàng</option>
-                                                            <option value="3" <?php if ($item['status_delivery'] == 3) echo "selected"; ?>>Đã giao hàng</option>
+                                                                <option value="0" <?php if ($item['status_delivery'] == 0) echo "selected"; ?>>Chờ xác nhận</option>
+                                                                <option value="1" <?php if ($item['status_delivery'] == 1) echo "selected"; ?>>Chờ lấy hàng</option>
+                                                                <option value="2" <?php if ($item['status_delivery'] == 2) echo "selected"; ?>>Chờ giao hàng</option>
+                                                                <option value="3" <?php if ($item['status_delivery'] == 3) echo "selected"; ?>>Đã giao hàng</option>
+                                                                <option value="-1" <?php if ($item['status_delivery'] == -1) echo "selected"; ?>>Đã Hủy</option>
 
-                                                        </select>
-
+                                                            </select>
+                                                        <?php endif; ?>
                                                     </td>
 
                                                     <td>
@@ -85,8 +89,9 @@
                                                     </td>
                                                 </form>
                                             </tr>
-                                        <?php endif; endforeach ?>
-                                   
+                                    <?php endif;
+                                    endforeach ?>
+
 
                                 </tbody>
                             </table>

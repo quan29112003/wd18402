@@ -1,3 +1,7 @@
+<?= require_once PATH_VIEW . 'layouts/partials/header.php' ?>
+
+<link rel="stylesheet" href="<?= BASE_URL ?>assets/client/client/css/about.css">
+
 
 <main class="bg_gray">
 			<div class="container margin_60_35 add_bottom_30">
@@ -108,3 +112,6 @@
 		<!-- /container -->
 	</main>
 	<!--/main-->
+
+<!-- footer --><?= require_once PATH_VIEW . 'layouts/partials/footer.php' ?>
+

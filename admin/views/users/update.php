@@ -78,8 +78,8 @@
                                 <div class="mb-3">
                                     <label for="type" class="form-label">Type</label>
                                     <select name="type" id="type" class="form-control">
-                                        <option value="1" <?= $user['type'] == 1 ? 'selected' : null ?>>Admin</option>
-                                        <option value="0" <?= $user['type'] == 0 ? 'selected' : null ?>>Member</option>
+                                    <option <?= $user['type'] == 1 ? 'selected' : null ?> value="1">Admin</option>
+                                    <option  <?= $user['type'] == 0 ? 'selected' : null ?> value="0">Member</option>
                                     </select>
 
                                 </div>
