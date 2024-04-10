@@ -20,8 +20,8 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>ID sản phẩm</th>
+                                        <th>sản phẩm</th>
+                                        <th>id bình luận</th>
                                         <th>Nội dung</th>
                                         <th>Username</th>
                                         <th>Ngày bình luận</th>
@@ -30,30 +30,52 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($data as $item) : ?>
-                                        <tr class="align-middle">
-                                            <td><?= $item['id']?></td>
-                                            <td><?= $item['idsanpham'] ?></td>
+                                    <?php
+                                    $i = 0;
+                                    foreach ($namesp as $value) {
+                                        foreach ($data as $item) {
+                                            if ($item['idsanpham'] == $value['SanPhamID']) {
+                                                $i++;
+                                            }
+                                        }
+                                        if ($i > 0) {
+                                    ?>
+                                            <!-- echo $value['TenSanPham'] . "<br>"; -->
+                                            <tr class="align-middle">
+                                                <td rowspan="<?= $i += 1 ?>"><strong>id: </strong><?= $value['SanPhamID'] ?><br><strong>tên sản phẩm: </strong><?= $value['TenSanPham'] ?></td>
+                                            </tr>
+                                            <?php
+                                        }
+                                        foreach ($data as $item) {
+                                            if ($item['idsanpham'] == $value['SanPhamID']) {
+                                            ?>
+                                                <tr>
 
-                                            <td><?= $item['noidung'] ?></td>
+                                                    <td><?= $item['id'] ?></td>
 
-                                            <td><?= $item['username'] ?></td>
+                                                    <td><?= $item['noidung'] ?></td>
 
-                                            <td><?= $item['ngaybinhluan'] ?></td>
+                                                    <td><?= $item['username'] ?></td>
 
-                                            <td><?= $item['Hidden'] ?></td>
+                                                    <td><?= $item['ngaybinhluan'] ?></td>
 
-                                            <td>
-                                                <!-- <div class="row"> -->
-                                                    <div class="col-md-6">
-                                                        <a href="<?= BASE_URL_ADMIN ?>?act=binh-luan-detail&id=<?= $item['id'] ?>" class="btn btn-info btn-block mb-2">Xem</a>
-                                                        <a href="<?= BASE_URL_ADMIN ?>?act=binh-luan-hien&id=<?= $item['id'] ?>" onclick="return confirm('Bạn có chắc muốn hiện không')" class="btn btn-success btn-block mb-2">Hiện</a>
-                                                        <a href="<?= BASE_URL_ADMIN ?>?act=binh-luan-an&id=<?= $item['id'] ?>" onclick="return confirm('Bạn có chắc muốn ẩn không')" class="btn btn-danger btn-block mb-2">Ẩn</a>
-                                                    <!-- </div> -->
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach ?>
+                                                    <td><?= $item['Hidden'] ? 'ẩn' : 'hiện' ?></td>
+
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <a href="<?= BASE_URL_ADMIN ?>?act=binh-luan-detail&id=<?= $item['id'] ?>" class="btn btn-info btn-block mb-2">Xem</a>
+                                                                <a href="<?= BASE_URL_ADMIN ?>?act=binh-luan-hien&id=<?= $item['id'] ?>" onclick="return confirm('Bạn có chắc muốn hiện không')" class="btn btn-success btn-block mb-2">Hiện</a>
+                                                                <a href="<?= BASE_URL_ADMIN ?>?act=binh-luan-an&id=<?= $item['id'] ?>" onclick="return confirm('Bạn có chắc muốn ẩn không')" class="btn btn-danger btn-block mb-2">Ẩn</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                    <?php
+                                            }
+                                        }
+                                        $i = 0;
+                                    } ?>
 
                                 </tbody>
                             </table>

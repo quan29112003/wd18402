@@ -3,7 +3,8 @@
 function BinhLuan($id)
 {
 
-    $BinhLuan = showOne2table('binhluan','sanpham','idsanpham','SanPhamID','idsanpham',$id);
+    $dataDanhMuc = listAll('danhmuc');
+    $BinhLuan = showOne2table('binhluan', 'sanpham', 'idsanpham', 'SanPhamID', 'idsanpham', $id);
     // $BinhLuan = showOne2('binhluan','idsanpham',$id);
     // debug($BinhLuan);
     if (!empty($_POST)) {

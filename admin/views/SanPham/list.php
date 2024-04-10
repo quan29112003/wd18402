@@ -62,7 +62,7 @@
                                             <td><?= $item['SoLuong'] ?></td>
 
                                             <td style="width: 400px"><?= $item['MoTa'] ?></td>
-                                            <td><?= $item['IsHidden'] ?></td>
+                                            <td><?= $item['IsHidden'] ? 'ẩn' : 'hiện' ?></td>
                                             <td>
                                                 <div class="row">
                                                     <div class="col-md-6">

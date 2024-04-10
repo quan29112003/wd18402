@@ -12,7 +12,7 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-8">
 					<div class="write_review">
-						<h1>Bình luận về <?= $BinhLuan['TenSanPham']?></h1>
+						<h1>Bình luận</h1>
 						<div class="rating_submit">
 							<div class="form-group">
 							<label class="d-block">Đánh giá cảm nghĩ của bạn</label>

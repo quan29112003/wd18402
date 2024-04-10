@@ -4,7 +4,8 @@ function binhluanListAll() {
     $title = 'Danh sách bình luận';
     $view = 'BinhLuan/list';
 
-    $data = listAll('binhluan');
+    $data = listBinhLuan();
+    $namesp = listAll('sanpham');
 
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
