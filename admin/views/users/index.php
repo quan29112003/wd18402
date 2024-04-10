@@ -17,7 +17,6 @@
                             <h3 class="card-title">Danh Mục</h3>
                         </div><!-- /.card-header -->
                         <div class="card-body">
-                            
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -50,10 +49,8 @@
                                             <td>
                                                 <a href="<?= BASE_URL_ADMIN ?>?act=user-detail&id=<?= $user['id'] ?>" class="btn btn-info">Show</a>
                                                 <a href="<?= BASE_URL_ADMIN ?>?act=user-update&id=<?= $user['id'] ?>" class="btn btn-warning">Update</a>
-                                                <a href="<?= BASE_URL_ADMIN ?>?act=user-delete&id=<?= $user['id'] ?>" 
-                                                onclick="return confirm('bạn có chắc chắn muốn xóa không ?')"
-                                                class="btn btn-danger">Delete</a>
-                                                
+                                                <a href="<?= BASE_URL_ADMIN ?>?act=user-delete&id=<?= $user['id'] ?>" onclick="return confirm('bạn có chắc chắn muốn xóa không ?')" class="btn btn-danger">Delete</a>
+
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -67,4 +64,3 @@
         </div><!--end::Container-->
     </div><!--end::App Content-->
 </main><!--end::App Main--><!--begin::Footer-->
-

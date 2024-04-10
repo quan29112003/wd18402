@@ -27,7 +27,6 @@
 
                         <!-- form them moi -->
                         <form action="" method="POST"><!--begin::Body-->
-
                             <?php if (isset($_SESSION['errors'])) :  ?>
                                 <div class="alert alert-danger">
                                     <ul>

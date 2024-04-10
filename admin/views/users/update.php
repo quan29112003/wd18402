@@ -34,6 +34,7 @@
                                     </div>
                                     <?php unset($_SESSION['success']); ?>
                                 <?php endif; ?>
+                                
                                 <?php if (isset($_SESSION['errors'])) :  ?>
                                     <div class="alert alert-danger">
                                         <ul>

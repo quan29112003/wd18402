@@ -1,6 +1,7 @@
 <main>
 	<div id="carousel-home">
 		<div class="owl-carousel owl-theme">
+			<div class="owl-slide cover">
 			<div class="owl-slide cover" style="background-image: url(uploads/banner1.jpg);">
 				<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
 					<div class="container">
@@ -108,7 +109,9 @@
 								<span class="new_price"><?= number_format($item['GiaSP']) ?>đ</span>
 							</div>
 						</a>
-						<a href="<?= BASE_URL . "?act=cart-add&productID=" .$item['SanPhamID'] ?>"><abutton class="btn_1">Thêm vào giỏ hàng</button></a>
+						<a href="<?= BASE_URL . "?act=cart-add&productID=" . $item['SanPhamID'] ?>">
+							<abutton class="btn_1">Thêm vào giỏ hàng</button>
+						</a>
 					</div>
 				</div>
 			<?php endforeach; ?>
@@ -157,7 +160,7 @@
 								<span class="new_price"><?= number_format($item['GiaSP']) ?>đ</span>
 							</div>
 						</a>
-						<a href="<?= BASE_URL . "?act=cart-add&productID=" .$item['SanPhamID'] ?>"><button class="btn_1">Thêm vào giỏ hàng</button></a>
+						<a href="<?= BASE_URL . "?act=cart-add&productID=" . $item['SanPhamID'] ?>"><button class="btn_1">Thêm vào giỏ hàng</button></a>
 					</div>
 				</div>
 			<?php endforeach; ?>
@@ -197,7 +200,7 @@
 			foreach ($SanPhamNew as $item) : ?>
 				<div class="item">
 					<div class="grid_item">
-					<span class="ribbon new">New</span>
+						<span class="ribbon new">New</span>
 						<a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
 							<div style="color: black;">
 								<figure>
@@ -209,7 +212,7 @@
 								<span class="new_price"><?= number_format($item['GiaSP']) ?>đ</span>
 							</div>
 						</a>
-						<a href="<?= BASE_URL . "?act=cart-add&productID=" .$item['SanPhamID'] ?>"><button class="btn_1">Thêm vào giỏ hàng</button></a>
+						<a href="<?= BASE_URL . "?act=cart-add&productID=" . $item['SanPhamID'] ?>"><button class="btn_1">Thêm vào giỏ hàng</button></a>
 					</div>
 				</div>
 			<?php endforeach; ?>
