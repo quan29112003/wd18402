@@ -20,6 +20,11 @@
                 <!-- /page_header -->
                 <div class="prod_info">
                     <h1><?= $dataSanPham['TenSanPham'] ?></h1>
+                    <div class="prod_options">
+	                        <div class="row">
+	                            <label class="col-xl-5 col-lg-5  col-md-6 col-6"><strong>Số Lượng: <?= $dataSanPham['SoLuong']?></strong></label>
+	                        </div>
+	                    </div>
                     <div class="row">
                         <div class="col-lg-5 col-md-6">
                             <div class="price_main"><span class="new_price">Giá: <?= number_format($dataSanPham['GiaSP']) ?>đ</span></div>

@@ -29,9 +29,9 @@ $arrRouteNeedAuth = [
     'order-checkout',
     'order-purchase',
     'order-success',
-    'san-pham',
-    'chi-tiet',
-    'listdoc',
+    // 'san-pham',
+    // 'chi-tiet',
+    // 'listdoc',
 
 
     'qltk',
@@ -39,12 +39,12 @@ $arrRouteNeedAuth = [
     'kiemtradonhang',
     'xemspdonhang',
 
-    'search',
+    // 'search',
 
     'binhluan',
 
-    'gioithieu',
-    'lienhe',
+    // 'gioithieu',
+    // 'lienhe',
 ];
 
 middleware_auth_check($act, $arrRouteNeedAuth);
