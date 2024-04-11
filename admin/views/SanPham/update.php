@@ -26,6 +26,7 @@
                         </div><!--end::Header--><!--begin::Form-->
 
                         <form action="" method="POST"><!--begin::Body-->
+                        
                             <div class="card-body">
                                 <input type="text" name="SanPhamID" id="" hidden>
                                 <div class="mb-3">

@@ -28,60 +28,61 @@
                         <!-- form them moi -->
                         <form action="" method="POST"><!--begin::Body-->
                             <div class="card-body">
-                            <?php if(isset($_SESSION['success'])):  ?>
-                            <div class="alert alert-success">
-                        <?= $_SESSION['success'] ?>
-                       </div>
-                       <?php unset($_SESSION['success']); ?>
-                            <?php endif; ?>
-                            <?php if(isset($_SESSION['errors'])):  ?>
-                       <div class="alert alert-danger">
-                        <ul>
-                            <?php foreach($_SESSION['errors'] as $error): ?>
-                            <li><?= $error ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                       </div>
-                       <?php unset($_SESSION['errors']); ?>
-                       <?php endif; ?>
+                                <?php if (isset($_SESSION['success'])) :  ?>
+                                    <div class="alert alert-success">
+                                        <?= $_SESSION['success'] ?>
+                                    </div>
+                                    <?php unset($_SESSION['success']); ?>
+                                <?php endif; ?>
+                                
+                                <?php if (isset($_SESSION['errors'])) :  ?>
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            <?php foreach ($_SESSION['errors'] as $error) : ?>
+                                                <li><?= $error ?></li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    </div>
+                                    <?php unset($_SESSION['errors']); ?>
+                                <?php endif; ?>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="name" value="<?= $user['name']?>" name="name">
+                                    <input type="text" class="form-control" id="name" value="<?= $user['name'] ?>" name="name">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" value="<?= $user['email']?>" name="email">
+                                    <input type="email" class="form-control" id="email" value="<?= $user['email'] ?>" name="email">
                                 </div>
 
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Họ và tên</label>
-                                    <input type="text" class="form-control" id="hoten_user" value="<?= $user['hoten_user']?>" name="hoten_user">
+                                    <input type="text" class="form-control" id="hoten_user" value="<?= $user['hoten_user'] ?>" name="hoten_user">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Địa chỉ</label>
-                                    <input type="text" class="form-control" id="diachi" value="<?= $user['diachi']?>" name="diachi">
+                                    <input type="text" class="form-control" id="diachi" value="<?= $user['diachi'] ?>" name="diachi">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Điện thoại</label>
-                                    <input type="text" class="form-control" id="tel" value="<?= $user['tel']?>" name="tel">
+                                    <input type="text" class="form-control" id="tel" value="<?= $user['tel'] ?>" name="tel">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="type" class="form-control" id="password" value="<?= $user['password']?>" name="password">
+                                    <input type="type" class="form-control" id="password" value="<?= $user['password'] ?>" name="password">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="type" class="form-label">Type</label>
                                     <select name="type" id="type" class="form-control">
-                                    <option <?= $user['type'] == 1 ? 'selected' : null ?>value="1">Admin</option>
-                                    <option  <?= $user['type'] == 0 ? 'selected' : null ?>value="0">Member</option>
+                                    <option <?= $user['type'] == 1 ? 'selected' : null ?> value="1">Admin</option>
+                                    <option  <?= $user['type'] == 0 ? 'selected' : null ?> value="0">Member</option>
                                     </select>
-                                    
+
                                 </div>
                             </div><!--end::Body--><!--begin::Footer-->
 
@@ -100,5 +101,3 @@
         </div><!--end::Container-->
     </div><!--end::App Content-->
 </main><!--end::App Main--><!--begin::Footer-->
-
-

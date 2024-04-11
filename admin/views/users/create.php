@@ -24,71 +24,58 @@
                         <div class="card-header">
                             <div class="card-title">Thêm mới User</div>
                         </div><!--end::Header--><!--begin::Form-->
-                        
+
                         <!-- form them moi -->
                         <form action="" method="POST"><!--begin::Body-->
-                        
-                        <?php if(isset($_SESSION['errors'])):  ?>
-                       <div class="alert alert-danger">
-                        <ul>
-                            <?php foreach($_SESSION['errors'] as $error): ?>
-                            <li><?= $error ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                       </div>
-                       <?php unset($_SESSION['errors']); ?>
-                       <?php endif; ?>
+                            <?php if (isset($_SESSION['errors'])) :  ?>
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        <?php foreach ($_SESSION['errors'] as $error) : ?>
+                                            <li><?= $error ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                                <?php unset($_SESSION['errors']); ?>
+                            <?php endif; ?>
                             <div class="card-body">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name"
-                                    value="<?= isset($_SESSION['data']) ? $_SESSION['data']['name'] : null  ?>"
-                                    placeholder="Name">
+                                    <input type="text" class="form-control" id="name" name="name" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['name'] : null  ?>" placeholder="Name">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Email</label>
-                                    <input type="text" class="form-control" id="email" name="email"
-                                    value="<?= isset($_SESSION['data']) ? $_SESSION['data']['email'] : null  ?>"
-                                    placeholder="Email">
+                                    <input type="text" class="form-control" id="email" name="email" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['email'] : null  ?>" placeholder="Email">
                                 </div>
 
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Họ và tên</label>
-                                    <input type="text" class="form-control" id="hoten_user" name="hoten_user"
-                                    value="<?= isset($_SESSION['data']) ? $_SESSION['data']['hoten_user'] : null  ?>"
-                                    placeholder="họ và tên">
+                                    <input type="text" class="form-control" id="hoten_user" name="hoten_user" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['hoten_user'] : null  ?>" placeholder="họ và tên">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Địa chỉ</label>
-                                    <input type="text" class="form-control" id="diachi" name="diachi"
-                                    value="<?= isset($_SESSION['data']) ? $_SESSION['data']['diachi'] : null  ?>"
-                                    placeholder="địa chỉ">
+                                    <input type="text" class="form-control" id="diachi" name="diachi" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['diachi'] : null  ?>" placeholder="địa chỉ">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Số điện thoại</label>
-                                    <input type="number" class="form-control" id="tel" name="tel"
-                                    value="<?= isset($_SESSION['data']) ? $_SESSION['data']['tel'] : null  ?>"
-                                    placeholder="số điện thoại">
+                                    <input type="number" class="form-control" id="tel" name="tel" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['tel'] : null  ?>" placeholder="số điện thoại">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password"
-                                    value="<?= isset($_SESSION['data']) ? $_SESSION['data']['password'] : null  ?>"
-                                    placeholder="password">
+                                    <input type="password" class="form-control" id="password" name="password" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['password'] : null  ?>" placeholder="password">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="type" class="form-label">Type</label>
                                     <select name="type" id="type" class="form-control">
-                                    <option <?= isset($_SESSION['data']) && $_SESSION['data']['type'] == 1 ? 'selected'  : null  ?> value= "1">Admin</option>
-                                    <option <?= isset($_SESSION['data']) && $_SESSION['data']['type'] == 0 ? 'selected'  : null  ?> value="0">Member</option>
+                                        <option <?= isset($_SESSION['data']) && $_SESSION['data']['type'] == 1 ? 'selected'  : null  ?> value="1">Admin</option>
+                                        <option <?= isset($_SESSION['data']) && $_SESSION['data']['type'] == 0 ? 'selected'  : null  ?> value="0">Member</option>
                                     </select>
-                                    
+
                                 </div>
                             </div><!--end::Body--><!--begin::Footer-->
 
@@ -107,5 +94,6 @@
         </div><!--end::Container-->
     </div><!--end::App Content-->
 
-    <?php if(isset($_SESSION['data'])) {unset($_SESSION['data']);} ?>
-
+    <?php if (isset($_SESSION['data'])) {
+        unset($_SESSION['data']);
+    } ?>

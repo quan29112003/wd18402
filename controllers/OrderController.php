@@ -67,6 +67,21 @@ function KiemTraDonHang($id)
         $_SESSION['error'] = 'Không có gì!';
     }
 
+    if (!empty($_POST)) {
+
+        $data = [
+            'status_delivery' => $_POST['status_delivery'],
+
+        ];
+
+
+        update('orders', 'id', $id, $data);
+
+        header('Location: ' . BASE_URL . '?act=kiemtradonhang&id=' .$_SESSION['user']['id']);
+
+        exit;
+    }
+
     $title = 'Chi Tiết Đơn Hàng';
     require_once PATH_VIEW . 'giohang/kiemtradonhang.php';
 }

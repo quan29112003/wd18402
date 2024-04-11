@@ -145,6 +145,24 @@ if (!function_exists('showOne')) {
     }
 }
 
+if (!function_exists('showOne2')) {
+    function showOne2($tableName, $idName, $id)
+    {
+        try {
+            $sql = "SELECT * FROM $tableName WHERE $idName = :id";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
+
+            return $stmt->fetch();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
 
 if (!function_exists('showOne2table')) {
     function showOne2table($tableName1, $tableName2, $Name1, $Name2, $idName, $id)

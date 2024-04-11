@@ -63,7 +63,10 @@ match ($act) {
 
     'search' => searchProduct(),
 
+    'binhluan' => BinhLuan($_GET['id']),
+
     'gioithieu' => GioiThieu(),
+    'lienhe' => LienHe(),
 };
 
 

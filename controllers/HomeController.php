@@ -37,6 +37,26 @@ function searchProduct()
 function GioiThieu() {
     require_once PATH_VIEW . 'gioithieu.php';
 }
+function LienHe() {
+    
+
+    if (!empty($_POST)) {
+
+        $data = [
+            'hoten' => $_POST['hoten'],
+            'tel' => $_POST['tel'],
+            'noidung' => $_POST['noidung']
+        ];
+
+        insert('lienhe', $data);
+        $_SESSION['success'] = 'Gửi liên hệ thành công!';
+
+        header('Location: ' . BASE_URL . '?act=lienhe');
+
+        exit;
+    }
+    require_once PATH_VIEW . 'lienhe.php';
+}
 
 // luồng mvc 1: vào index
 // vào index -> được điều hướng đến hàm xử lý logic trong controller tương ứng

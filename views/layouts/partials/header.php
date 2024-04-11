@@ -85,7 +85,7 @@
 										</ul>
 									</li>
 									<li>
-										<a href="#">Liên hệ</a>
+										<a href="index.php?act=lienhe">Liên hệ</a>
 									</li>
 									<li>
 										<a href="index.php?act=gioithieu">Giới Thiệu</a>

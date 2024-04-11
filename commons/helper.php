@@ -65,11 +65,11 @@ if (!function_exists('middleware_auth_check_admin')) {
     function middleware_auth_check_admin($act, $arrRouteNeedAuth)
     {
         if ($act == 'login-admin') {
-            if (!empty($_SESSION['userAdmin'])) {
+            if (!empty($_SESSION['admin'])) {
                 header('Location: ' . BASE_URL_ADMIN);
                 exit();
             }
-        } elseif (empty($_SESSION['userAdmin']) && in_array($act, $arrRouteNeedAuth)) {
+        } elseif (empty($_SESSION['admin']) && in_array($act, $arrRouteNeedAuth)) {
             header('Location: ' . BASE_URL_ADMIN . '?act=login-admin');
             exit();
         }

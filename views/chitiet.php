@@ -75,7 +75,7 @@
                                     <h3>Chi tiết</h3>
                                     <p><?= $dataSanPham['MoTa'] ?></p>
                                 </div>
-                                
+
 
                             </div>
                         </div>
@@ -89,6 +89,64 @@
                             </a>
                         </h5>
                     </div>
+                    <div id="collapse-B" class="collapse" role="tabpanel" aria-labelledby="heading-B">
+                        <div class="card-body">
+                            <div class="row justify-content-between">
+                                <?php foreach ($SanPhamBinhLuan as $binhluan) : if ($binhluan['Hidden'] != 1) :?>
+                                    <div class="col-lg-6">
+                                        <div class="review_content">
+                                            <div class="clearfix add_bottom_10">
+                                                <span class="rating">
+                                                    <h6 style="color:black;"><?= $binhluan['username'] ?></h6>
+                                                </span>
+                                                <?php
+                                                // Get the comment date
+                                                $ngaybinhluan = $binhluan['ngaybinhluan'];
+
+                                                // Convert $ngaybinhluan to DateTime object
+                                                $ngaybinhluan_datetime = new DateTime($ngaybinhluan);
+                                                $current_datetime = new DateTime(); // Current datetime
+
+                                                // Calculate the difference in days
+                                                $interval = $ngaybinhluan_datetime->diff($current_datetime);
+                                                $days_difference = $interval->days;
+
+                                                // Format the output based on the difference
+                                                if ($days_difference == 0) {
+                                                    // Calculate the difference in hours and minutes
+                                                    $hours_difference = $interval->h;
+                                                    $minutes_difference = $interval->i;
+
+                                                    if ($hours_difference == 0) {
+                                                        if ($minutes_difference == 0) {
+                                                            $formatted_ngaybinhluan = "Vừa xong";
+                                                        } else {
+                                                            $formatted_ngaybinhluan = "$minutes_difference phút trước";
+                                                        }
+                                                    } else {
+                                                        $formatted_ngaybinhluan = "$hours_difference giờ trước";
+                                                    }
+                                                } elseif ($days_difference == 1) {
+                                                    $formatted_ngaybinhluan = "1 ngày trước";
+                                                } else {
+                                                    $formatted_ngaybinhluan = "$days_difference ngày trước";
+                                                }
+                                                ?>
+                                                <em><?= $formatted_ngaybinhluan ?></em>
+                                                <p style="color:#676767;"><?= $binhluan['noidung'] ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endif; endforeach; ?>
+                            </div>
+                            <!-- /row -->
+                            <p class="text-end">
+                                <a href="<?= BASE_URL . '?act=binhluan&id=' . $dataSanPham['SanPhamID'] ?>"><button class="btn btn_1">Bình luận</button></a>
+                            </p>
+                        </div>
+                        <!-- /card-body -->
+                    </div>
+
                 </div>
             </div>
             <!-- /tab-content -->
@@ -103,18 +161,18 @@
         </div>
         <div class="owl-carousel owl-theme products_carousel">
             <?php
-            foreach ($SanPhamCungLoai as $item) : ?>
+            foreach ($SanPhamCungLoai as $item) : if ($item['IsHidden'] != 1) :?>
                 <div class="item">
                     <div class="grid_item">
                         <div style="color: black;">
-								<figure>
-                            <a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
-                                <img class="" src="uploads/<?= $item['anhSP1'] ?>" alt="" >
-                            </a>
+                            <figure>
+                                <a href="<?= BASE_URL ?>?act=chi-tiet&id=<?= $item['SanPhamID'] ?>">
+                                    <img class="" src="uploads/<?= $item['anhSP1'] ?>" alt="">
+                                </a>
 
-								</figure>
-								<?= $item['TenSanPham'] ?>
-							</div>
+                            </figure>
+                            <?= $item['TenSanPham'] ?>
+                        </div>
                         <!-- <a href="">
                             <h3><?= $item['TenSanPham'] ?></h3>
                         </a> -->
@@ -127,7 +185,7 @@
                         </form>
                     </div>
                 </div>
-            <?php endforeach ?>
+            <?php endif; endforeach; ?>
         </div>
         <!-- /products_carousel -->
     </div>
