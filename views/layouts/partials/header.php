@@ -174,6 +174,7 @@
 												<a href="index.php?act=login-sigin" class="btn_1">Đăng nhập hoặc Đăng ký</a>
 											<?php } ?>
 											<ul>
+												<?php if(!empty($_SESSION['user'])) :?>
 												<li>
 													<a href="<?= BASE_URL . "?act=kiemtradonhang&id=" . $id ?>"><i class="ti-package"></i>Đơn hàng của tôi</a>
 												</li>
@@ -183,6 +184,7 @@
 												<li>
 													<a href="<?= BASE_URL . '?act=logout' ?>"><i class="ti-user"></i>Đăng Xuất</a>
 												</li>
+												<?php endif ?>
 											</ul>
 										</div>
 									</div>

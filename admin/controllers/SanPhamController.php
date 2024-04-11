@@ -239,16 +239,31 @@ function SanPhamHide($id)
 {
     // Thực hiện cập nhật trường 'IsHidden' hoặc tương tự trong bảng 'sanpham' để đánh dấu sản phẩm là ẩn
     // Giả sử 'IsHidden' là tên trường để xác định sản phẩm có đang bị ẩn hay không
-    update('sanpham', 'SanPhamID', $id, ['IsHidden' => 1]);
+    if ($id == 0) {
+        header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
+        die;
+    } else {
+        update('sanpham', 'SanPhamID', $id, ['IsHidden' => 1]);
 
-    header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
-    die;
+        header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
+        die;
+    }
 }
 
 function SanPhamHien($id)
 {
-    update('sanpham', 'SanPhamID', $id, ['IsHidden' => 0]);
+    $dataSoLuong = selectSoLuong();
+    foreach ($dataSoLuong as $value) {
+        if ($id == $value['SanPhamID']) {
+            if ($value['SoLuong'] == 0) {
+                header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
+                die;
+            } else {
+                update('sanpham', 'SanPhamID', $id, ['IsHidden' => 0]);
 
-    header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
-    die;
+                header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
+                die;
+            }
+        }
+    }
 }

@@ -17,6 +17,19 @@ function index(){
 
     $SanPhamNew = list2table3('sanpham', 'anhsanpham', 'SanPhamID', 'ID_SanPham','SanPhamID');
 
+    foreach ($dataSanPham as $value) {
+        if ($value['SoLuong'] == 0) {
+            $id = $value['SanPhamID'];
+            update('sanpham', 'SanPhamID', $id, ['IsHidden' => 1]);
+        }
+    }
+
+    foreach ($SanPhamNew as $value) {
+        if ($value['SoLuong'] == 0) {
+            $id = $value['SanPhamID'];
+            update('sanpham', 'SanPhamID', $id, ['IsHidden' => 1]);
+        }
+    }
 
     require_once PATH_VIEW . 'layouts/master.php';
 }

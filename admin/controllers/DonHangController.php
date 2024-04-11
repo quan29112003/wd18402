@@ -8,7 +8,7 @@ function DonHangListAll()
     // $data = list3table('sanpham', 'danhmuc', 'anhsanpham', 'ID_DanhMuc', 'DanhMucID', 'SanPhamID', 'ID_SanPham');
 
     $donhang = list2table('orders','order_items','id','order_id') ;
-
+    $user = listAll('users');
     
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }

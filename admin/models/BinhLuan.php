@@ -2,7 +2,9 @@
 
 function listBinhLuan(){
     try {
-        $sql = "SELECT * FROM `binhluan` WHERE 1 ORDER BY idsanpham DESC";
+        $sql = "SELECT * FROM `binhluan` WHERE 1 ";
+        
+        // $sql .="ORDER BY idsanpham DESC";
 
         $stmt = $GLOBALS['conn']->prepare($sql);
 

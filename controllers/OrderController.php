@@ -32,10 +32,24 @@ function orderPurchase()
                     // 'status_payment' => STATUS_PAYMENT_UNPAID,
                 ];
 
+                $dataSoLuong = selectSoLuong();
+
+                $SoLuong = 0;
+
+                foreach ($dataSoLuong as $value) {
+                    if($item['SanPhamID'] == $value['SanPhamID']){
+                        $SoLuong = $value['SoLuong'] - $item['quantity'];
+                    }
+                }
+                
                 insert('order_items', $orderItem);
+
+                UpdateSoLuongSP($SoLuong, $item['SanPhamID']);
+
             }
 
             // Xử lý hậu
+
             deleteCartItemByCartID($_SESSION['cartID']);
             delete2('carts', $_SESSION['cartID']);
 

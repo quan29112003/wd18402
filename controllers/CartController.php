@@ -57,7 +57,7 @@ function cartInc($productID)
     }
 
     // Tăng số lượng lên 1
-    if (isset($_SESSION['cart'][$productID])) {
+    if (isset($_SESSION['cart'][$productID]) && $_SESSION['cart'][$productID]['quantity'] < $product['SoLuong']) {
         $qtyTMP = $_SESSION['cart'][$productID]['quantity'] += 1;
 
         updateQuantityByCartIDAndProductID($_SESSION['cartID'], $productID, $qtyTMP);

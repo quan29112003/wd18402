@@ -16,6 +16,19 @@
 //             debug($e);
 //         }
 //     }
+function selectSoLuong(){
+    try {
+        $sql = "SELECT `SanPhamID`, `SoLuong` FROM `sanpham` "; 
+
+        $stmt = $GLOBALS['conn']->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    } catch (\Exception $e) {
+        debug($e);
+    }
+}
 
 function listAnhSanPham($idSP){
     try {
