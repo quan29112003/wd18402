@@ -103,13 +103,13 @@
 								$tongsoluong += $pro['quantity'];
 							?>
 								<li class="clearfix"><?= $pro['quantity'] ?>x <?= $pro['product_name'] ?> </li>
-								<li class="clearfix">Giá:<span style="color:red;"> <?= number_format($pro['price']) ?>đ</span></li>
+								Giá:<span style="color:red;"> <?= number_format($pro['price']) ?>đ</span>
 							<?php endforeach; ?>
 							<!-- <li class="clearfix"><em>1x Armor Air X Fear</em>  <span>$145.00</span></li>
 							<li class="clearfix"><em>2x Armor Air Zoom Alpha</em> <span>$115.00</span></li> -->
 						</ul>
 						<ul>
-							<li class="clearfix"><em><strong>Giá của <?= $tongsoluong ?> sản phẩm</strong></em> <span style="color:red;"><?= number_format($pro['total_bill']) ?>đ</span></li>
+							<li class="clearfix"><em><strong>Giá của <?= $tongsoluong ?> sản phẩm: </strong></em> <span style="color:red;"><?= number_format($pro['total_bill']) ?>đ</span></li>
 
 						</ul>
 						</form>
