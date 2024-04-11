@@ -64,7 +64,7 @@ function authenSignup() {
         }         
          insert('users', $data);
          $_SESSION['successSignin'] = 'Thao tác thành công';
-         unset($_SESSION['d']);
+         unset($_SESSION['data']);
          header('location: ' . BASE_URL . '?act=login');
          exit();
     }

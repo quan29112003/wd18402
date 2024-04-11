@@ -72,8 +72,8 @@
                                 <div class="mb-3">
                                     <label for="type" class="form-label">Type</label>
                                     <select name="type" id="type" class="form-control">
-                                        <option <?= isset($_SESSION['data']) && $_SESSION['data']['type'] == 1 ? 'selected'  : null  ?> value="1">Admin</option>
-                                        <option <?= isset($_SESSION['data']) && $_SESSION['data']['type'] == 0 ? 'selected'  : null  ?> value="0">Member</option>
+                                        <option value="1" <?= isset($_SESSION['data']) && $_SESSION['data']['type'] == 1 ? 'selected'  : null  ?>>Admin</option>
+                                        <option value="0" <?= isset($_SESSION['data']) && $_SESSION['data']['type'] == 0 ? 'selected'  : null  ?>>Member</option>
                                     </select>
 
                                 </div>
