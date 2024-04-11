@@ -2,12 +2,15 @@
 
 function authenShowFormLoginandSignin()
 {
-    
+
+    $dataDanhMuc = listAll('danhmuc');
     require_once PATH_VIEW . 'authen/dangnhap_dangky.php';
 }
 
 function authenShowFormLogin()
 {
+
+    $dataDanhMuc = listAll('danhmuc');
     if ($_POST) {
         authenLogin();
     }
@@ -17,6 +20,8 @@ function authenShowFormLogin()
 
 function authenShowFormSignup()
 {
+
+    $dataDanhMuc = listAll('danhmuc');
     if ($_POST) {
         authenSignup();
     }
@@ -41,37 +46,39 @@ function authenLogin()
     exit();
 }
 
-function authenSignup() {
+function authenSignup()
+{
     // $title = 'đăng ký user';
     // $view = 'authen/create';
     $test = "test";
-    if(!empty($_POST)) {
+    if (!empty($_POST)) {
         $data = [
-         "name" => $_POST['name'] ?? null,
-         "email" => $_POST['email'] ?? null,
-         "hoten_user" => $_POST['hoten_user'] ?? null,
-         "diachi" => $_POST['diachi'] ?? null,
-         "tel" => $_POST['tel'] ?? null,
-         "password" => $_POST['password'] ?? null,
+            "name" => $_POST['name'] ?? null,
+            "email" => $_POST['email'] ?? null,
+            "hoten_user" => $_POST['hoten_user'] ?? null,
+            "diachi" => $_POST['diachi'] ?? null,
+            "tel" => $_POST['tel'] ?? null,
+            "password" => $_POST['password'] ?? null,
         ];
 
         $errors = validateCreate($data);
-        if(!empty($errors)) {
+        if (!empty($errors)) {
             $_SESSION['errorsSignin'] = $errors;
             $_SESSION['data'] = $data;
             header('location: ' . BASE_URL . '?act=signup');
             exit();
-        }         
-         insert('users', $data);
-         $_SESSION['successSignin'] = 'Thao tác thành công';
-         unset($_SESSION['data']);
-         header('location: ' . BASE_URL . '?act=login');
-         exit();
+        }
+        insert('users', $data);
+        $_SESSION['successSignin'] = 'Thao tác thành công';
+        unset($_SESSION['data']);
+        header('location: ' . BASE_URL . '?act=login');
+        exit();
     }
     require_once PATH_VIEW . 'layouts/master.php';
 }
 
-function validateCreate($data) {
+function validateCreate($data)
+{
     // name- bắt buộc, độ dài tối đa 50 ký tự
     //email - bắt buộc, phải là email, ko được trùng
     //họ tên user - bắt buộc, độ dài tối đa 50 ký tự
@@ -79,41 +86,41 @@ function validateCreate($data) {
     //password - bắt buộc, độ dài nhỏ nhất là 8, lớn nhất là 20
     //type- bắt buộc, phải là 0 or 1
     $errors = [];
-    if(empty($data['name'])) {
+    if (empty($data['name'])) {
         $errors[] = 'Trường name là bắt buộc';
-    }else if(strlen($data['name']) >50) {
+    } else if (strlen($data['name']) > 50) {
         $errors[] = 'Trường name độ dài tối đa 50 ký tự';
     }
 
-    if(empty($data['email'])) {
+    if (empty($data['email'])) {
         $errors[] = 'Trường email là bắt buộc';
-    }else if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+    } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
         $errors[] = 'Email không đúng định dạng';
-    } else if(!checkUniqueEmail('users', $data['email'])) {
+    } else if (!checkUniqueEmail('users', $data['email'])) {
         $errors[] = 'Email này đã được sử dụng rồi';
     }
 
-    if(empty($data['hoten_user'])) {
+    if (empty($data['hoten_user'])) {
         $errors[] = 'Họ tên là bắt buộc';
-    }else if(strlen($data['hoten_user']) >50) {
+    } else if (strlen($data['hoten_user']) > 50) {
         $errors[] = 'Họ tên độ dài tối đa 50 ký tự';
     }
 
-    if(empty($data['diachi'])) {
+    if (empty($data['diachi'])) {
         $errors[] = 'Địa chỉ là bắt buộc';
-    }else if(strlen($data['diachi']) >50) {
+    } else if (strlen($data['diachi']) > 50) {
         $errors[] = 'Họ tên độ dài tối đa 50 ký tự';
     }
 
-    if(empty($data['tel'])) {
+    if (empty($data['tel'])) {
         $errors[] = 'Số điện thoại là bắt buộc';
-    }else if(strlen($data['tel']) >10 || strlen($data['tel']) <10) {
+    } else if (strlen($data['tel']) > 10 || strlen($data['tel']) < 10) {
         $errors[] = 'Số điện thoại không đúng định dạng';
     }
 
-    if(empty($data['password'])) {
+    if (empty($data['password'])) {
         $errors[] = 'Password là bắt buộc';
-    }else if(strlen($data['password']) <8 || strlen($data['password']) >20) {
+    } else if (strlen($data['password']) < 8 || strlen($data['password']) > 20) {
         $errors[] = 'Độ dài tối thiểu của password phải là 8, lớn nhất là 20';
     }
 
@@ -141,7 +148,7 @@ function updatetk($id)
 
     if (empty($TaiKhoan)) {
         $_SESSION['error'] = 'Bạn chưa đăng nhập!';
-        
+
         header('Location: ' . BASE_URL . '?act=login');
     }
 
@@ -163,7 +170,6 @@ function updatetk($id)
         header('Location: ' . BASE_URL . '?act=updatetk&id=' . $id);
 
         exit;
-        
     }
 
 

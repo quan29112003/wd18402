@@ -16,6 +16,7 @@ require_file(PATH_MODEL);
 // debug($data);
 
 // điều hướng
+
 $act = $_GET['act'] ?? '/';
 
 
