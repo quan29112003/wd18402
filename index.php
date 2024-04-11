@@ -45,7 +45,9 @@ match ($act) {
     'order-checkout'  => orderCheckout(),
     'order-purchase'  => orderPurchase(),
 
+    'login-sigin' => authenShowFormLoginandSignin(),
     'login' => authenShowFormLogin(),
+    'signup' => authenShowFormSignup(),
     'logout' => authenLogout(),
 
 
