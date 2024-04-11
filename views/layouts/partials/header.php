@@ -171,7 +171,7 @@
 											<?php
 											} else {
 											?>
-												<a href="index.php?act=login" class="btn_1">Đăng nhập hoặc Đăng ký</a>
+												<a href="index.php?act=login-sigin" class="btn_1">Đăng nhập hoặc Đăng ký</a>
 											<?php } ?>
 											<ul>
 												<li>

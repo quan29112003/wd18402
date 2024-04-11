@@ -20,6 +20,7 @@
 		<div class="row justify-content-center">
 			<div class="col-xl-6 col-lg-6 col-md-8">
 				<div class="box_account">
+
 					<h3 class="client">Đã có tài khoản?</h3>
 					<div class="form_container">
 
@@ -49,11 +50,7 @@
 							</div>
 							<div class="text-center"><button type="submit" class="btn_1 full-width">Đăng Nhập</button></div>
 						</form>
-						<?php
-						if (isset($thongbao1) && ($thongbao1 != "")) {
-							echo $thongbao1;
-						}
-						?>
+
 						<div id="forgot_pw">
 							<div class="form-group">
 								<input type="email" class="form-control" name="email_forgot" id="email_forgot" placeholder="Nhập Email của bạn...">
@@ -69,8 +66,49 @@
 			</div>
 			<div class="col-xl-6 col-lg-6 col-md-8">
 				<div class="box_account">
+
 					<h3 class="new_client">Đăng ký ngay</h3> <small class="float-right pt-2">**Vui lòng điền đầy đủ thông tin !!</small>
 					<div class="form_container">
+						<?php if (isset($_SESSION['successSignin'])) : ?>
+							<div class="alert alert-successSignin">
+								<?= $_SESSION['successSignin'] ?>
+							</div>
+							<?php unset($_SESSION['successSignin']); ?>
+						<?php endif; ?>
+
+
+						<?php if (isset($_SESSION['errorsSignin'])) :  ?>
+							<div class="alert alert-danger">
+								<ul>
+									<?php foreach ($_SESSION['errorsSignin'] as $error) : ?>
+										<li><?= $error ?></li>
+									<?php endforeach; ?>
+								</ul>
+							</div>
+							<?php unset($_SESSION['errorsSignin']); ?>
+						<?php endif; ?>
+						<form action="index.php?act=signup" method="post">
+							<div class="form-group">
+								<!-- <?= $test ?> -->
+								<input type="text" class="form-control" name="name" id="name" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['name'] : null  ?>" placeholder="Name..">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="email" id="email" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['email'] : null  ?>" placeholder="Email...">
+
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="hoten_user" id="hoten_user" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['hoten_user'] : null  ?>" placeholder="Họ và tên...">
+
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="diachi" id="diachi" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['diachi'] : null  ?>" placeholder="Địa chỉ...">
+							</div>
+							<div class="form-group">
+								<input type="number" class="form-control" name="tel" id="tel" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['tel'] : null  ?>" placeholder="Số điện thoại...">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" name="password" id="password" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['password'] : null  ?>" placeholder="Password...">
+
 						<form action="index.php?act=dangky" method="post">
 							<div class="form-group">
 								<input type="email" class="form-control" name="email" id="email" placeholder="Email..">
@@ -97,6 +135,7 @@
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control" name="tel" id="tel" value="" placeholder="Số điện thoại...">
+
 							</div>
 							<hr>
 							<div class="form-group">
@@ -107,10 +146,7 @@
 							</div>
 							<div class="text-center"><input type="submit" value="Đăng ký" class="btn_1 full-width" name="dangky"></div>
 						</form>
-						<?php
-						if (isset($thongbao) && ($thongbao != "")) {
-							echo $thongbao;
-						} ?>
+
 					</div>
 					<!-- /form_container -->
 				</div>
