@@ -70,6 +70,8 @@
                                                     <td> <!-- <label for="" class="form-label">Trạng thái</label> -->
                                                         <?php if ($item['status_delivery'] == -1) : ?>
                                                             <span>Đã hủy</span>
+                                                        <?php elseif ($item['status_delivery'] == 3) : ?>
+                                                            <span>Đã giao hàng</span>
                                                         <?php else : ?>
                                                             <select name="status_delivery" id="" class="form-select">
 
