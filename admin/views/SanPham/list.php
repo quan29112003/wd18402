@@ -75,7 +75,7 @@
                                                         <a href="<?= BASE_URL_ADMIN ?>?act=san-pham-an&id=<?= $item['SanPhamID'] ?>" onclick="return confirm('Bạn có chắc muốn ẩn không')" class="btn btn-danger btn-block mb-2">Ẩn</a>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <a href="<?= BASE_URL_ADMIN ?>?act=san-pham-hien&id=<?= $item['SanPhamID'] ?>" onclick="return confirm('Bạn có chắc muốn hiện không')" class="btn btn-warning btn-block mb-2">Hiện</a>
+                                                        <a href="<?= BASE_URL_ADMIN ?>?act=san-pham-hien&id=<?= $item['SanPhamID'] ?>" onclick="return confirm('Bạn có chắc muốn hiện không')" class="btn btn-warning btn-block mb-2  <?php if($item['SoLuong'] == 0){ echo 'disabled'; } ?>" >Hiện</a>
                                                     </div>
                                                 </div>
                                                 <div class="row">

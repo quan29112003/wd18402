@@ -6,9 +6,16 @@ function SanPhamListAll()
     $view = 'SanPham/list';
 
     // lấy ra sản phẩm và danh mục
-    $data = list2table('sanpham', 'danhmuc', 'ID_DanhMuc', 'DanhMucID'); 
+    $data = list2table('sanpham', 'danhmuc', 'ID_DanhMuc', 'DanhMucID');
     // lấy ra ảnh sản phẩm
     $dataAnh = listAll('anhsanpham');
+
+    foreach ($data as $value) {
+        if ($value['SoLuong'] == 0) {
+            $id = $value['SanPhamID'];
+            update('sanpham', 'SanPhamID', $id, ['IsHidden' => 1]);
+        }
+    }
 
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
@@ -17,8 +24,8 @@ function SanPhamListAll()
 function SanPhamShow($id)
 {
     // lấy ra sản phẩm, danh mục, ảnh sản phẩm
-    $data = showOne3table('sanpham', 'danhmuc', 'anhsanpham', 'ID_DanhMuc', 'DanhMucID', 'SanPhamID', 'ID_SanPham','SanPhamID', $id);
-    
+    $data = showOne3table('sanpham', 'danhmuc', 'anhsanpham', 'ID_DanhMuc', 'DanhMucID', 'SanPhamID', 'ID_SanPham', 'SanPhamID', $id);
+
     if (empty($data)) {
         e404();
     }
@@ -34,7 +41,7 @@ function SanPhamCreate()
 {
     $title = 'thêm mới danh mục';
     $view = 'SanPham/create';
-    
+
     // lấy ra danh mục
     $dataDanhMuc = listAll('danhmuc');
 
@@ -48,7 +55,7 @@ function SanPhamCreate()
             'MoTa' => $_POST['MoTa'] ?? null,
         ];
 
-        
+
         $errors = validateCreateProduct($data);
 
         if (!empty($errors)) {
@@ -70,20 +77,21 @@ function SanPhamCreate()
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
-function validateCreateProduct($data) {
+function validateCreateProduct($data)
+{
     $errors = [];
-    if(empty($data['TenSanPham'])) {
+    if (empty($data['TenSanPham'])) {
         $errors[] = 'Trường tên sản phẩm là bắt buộc';
     }
 
-    if(empty($data['GiaSP'])) {
+    if (empty($data['GiaSP'])) {
         $errors[] = 'Trường giá sản phẩm là bắt buộc';
     }
 
-    if(empty($data['SoLuong'])) {
+    if (empty($data['SoLuong'])) {
         $errors[] = 'Trường số lượng sản phẩm là bắt buộc';
     }
-    
+
     return $errors;
 }
 
@@ -190,7 +198,7 @@ function SanPhamUpdate($id)
         ];
 
         // cập nhật sản phẩm
-        update('sanpham','SanPhamID', $id, $data);
+        update('sanpham', 'SanPhamID', $id, $data);
 
         // ở lại trang update
         header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
@@ -204,9 +212,10 @@ function SanPhamUpdate($id)
 
 // xóa sản phẩm
 
-function AnhSPDelete($id){
+function AnhSPDelete($id)
+{
 
-    
+
     // lấy ra ảnh cần update
     $AnhSanPham = showOne('anhsanpham', 'anhID', $id);
 
@@ -235,7 +244,9 @@ function SanPhamHide($id)
     header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');
     die;
 }
-function SanPhamHien($id){
+
+function SanPhamHien($id)
+{
     update('sanpham', 'SanPhamID', $id, ['IsHidden' => 0]);
 
     header('Location: ' . BASE_URL_ADMIN . '?act=san-pham');

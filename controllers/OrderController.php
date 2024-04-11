@@ -14,7 +14,7 @@ function orderPurchase()
         try {
             // Xử lý lưu vào bảng orders và order_items
             $data = $_POST;
-            $data['user_id']            = $_SESSION['user']['id'];
+            $data['user_id']            = $_SESSION['user']['id'];                          
             $data['total_bill']         = caculator_total_order(false);
             $data['status_delivery']    = STATUS_DELIVERY_WFC;
             // $data['status_payment']     = STATUS_PAYMENT_UNPAID;
@@ -88,7 +88,6 @@ function KiemTraDonHang($id)
 
 function XemSPDonHang($id)
 {
-
 
     $dataDanhMuc = listAll('danhmuc');
     $SanPhamDonHang = list2table2('order_items', 'orders', 'order_id', 'id', 'order_id', $id);

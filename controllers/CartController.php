@@ -30,7 +30,7 @@ function cartAdd($productID, $quantity = 1)
     } else {
         $qtyTMP = $_SESSION['cart'][$productID]['quantity'] += $quantity;
 
-        updateQuantityByCartIDAndProductID($cartID, $productID, $qtyTMP);
+        // updateQuantityByCartIDAndProductID($cartID, $productID, $qtyTMP);
     }
 
     // $data = list3table('cart_items', 'sanpham','anhsanpham', 'product_id', 'SanPhamID', 'product_id', 'ID_SanPham');
