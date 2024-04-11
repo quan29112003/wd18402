@@ -108,45 +108,6 @@
 							</div>
 							<div class="form-group">
 								<input type="password" class="form-control" name="password" id="password" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['password'] : null  ?>" placeholder="Password...">
-
-						<form action="index.php?act=dangky" method="post">
-							<div class="form-group">
-								<input type="email" class="form-control" name="email" id="email" placeholder="Email..">
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="user" id="user" value="" placeholder="Tên đăng nhập...">
-								<?php
-								if (isset($thongbao2) && ($thongbao2 != "")) {
-									echo $thongbao2;
-								} ?>
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control" name="password" id="password" value="" placeholder="Password...">
-								<?php
-								if (isset($thongbao3) && ($thongbao3 != "")) {
-									echo $thongbao3;
-								} ?>
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="hoten_user" id="hoten_user" value="" placeholder="Họ và tên...">
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="address" id="address" value="" placeholder="Địa chỉ...">
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="tel" id="tel" value="" placeholder="Số điện thoại...">
-
-							</div>
-							<hr>
-							<div class="form-group">
-								<label class="container_check">Tôi đồng ý với<a href="#0"> Thỏa thuận và Điều khoản</a>
-									<input type="checkbox">
-									<span class="checkmark"></span>
-								</label>
-							</div>
-							<div class="text-center"><input type="submit" value="Đăng ký" class="btn_1 full-width" name="dangky"></div>
-						</form>
-
 					</div>
 					<!-- /form_container -->
 				</div>
