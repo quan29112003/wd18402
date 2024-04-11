@@ -108,6 +108,16 @@
 							</div>
 							<div class="form-group">
 								<input type="password" class="form-control" name="password" id="password" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['password'] : null  ?>" placeholder="Password...">
+								<hr>
+								<div class="form-group">
+									<label class="container_check">Tôi đồng ý với<a href="#0"> Thỏa thuận và Điều khoản</a>
+										<input type="checkbox">
+										<span class="checkmark"></span>
+									</label>
+								</div>
+								<div class="text-center"><input type="submit" value="Đăng ký" class="btn_1 full-width" name="dangky"></div>
+						</form>
+
 					</div>
 					<!-- /form_container -->
 				</div>
