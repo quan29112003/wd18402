@@ -105,8 +105,7 @@
 												echo "Unknown payment method";
 											}
 											?></strong>
-								</td>
-
+								</td> 
 								<td class="options">
 									<strong>$<?= number_format($item['total_bill']) ?>đ</strong>
 								</td>
@@ -116,7 +115,7 @@
 										<?php if ($item['status_delivery'] == 2 || $item['status_delivery'] == 3 || $item['status_delivery'] == -1 ) :  ?>
 										<?php else : ?>
 											<input type="text" name="status_delivery" hidden value="-1">
-											<input type="submit" class="btn btn-danger" value="Hủy đơn">
+											<input type="submit" class="btn btn-danger" onclick="return confirm('Bạn muốn hủy đơn hàng?')" value="Hủy đơn">
 										<?php endif; ?>
 									</form>
 									<a href="<?= BASE_URL ?>?act=xemspdonhang&id=<?= $item['order_id'] ?>"><input type="button" class="btn_1" value="Xem đơn hàng"></a>

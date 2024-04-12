@@ -175,3 +175,7 @@ function updatetk($id)
 
     require_once PATH_VIEW . 'authen/qltk.php';
 }
+function QuenMk() {
+
+    require_once PATH_VIEW . 'authen/dangnhap_dangky.php';
+}

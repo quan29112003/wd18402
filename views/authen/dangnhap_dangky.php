@@ -50,14 +50,15 @@
 							</div>
 							<div class="text-center"><button type="submit" class="btn_1 full-width">Đăng Nhập</button></div>
 						</form>
-
-						<div id="forgot_pw">
-							<div class="form-group">
-								<input type="email" class="form-control" name="email_forgot" id="email_forgot" placeholder="Nhập Email của bạn...">
+						<form action="index.php?act=quenmk">
+							<div id="forgot_pw">
+								<div class="form-group">
+									<input type="email" class="form-control" name="email_forgot" id="email_forgot" placeholder="Nhập Email của bạn...">
+								</div>
+								<p>A new password will be sent shortly.</p>
+								<div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
 							</div>
-							<p>A new password will be sent shortly.</p>
-							<div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
-						</div>
+						</form>
 					</div>
 					<!-- /form_container -->
 				</div>

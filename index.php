@@ -84,6 +84,8 @@ match ($act) {
 
     'gioithieu' => GioiThieu(),
     'lienhe' => LienHe(),
+
+    'quenmk' => QuenMk(),
 };
 
 
