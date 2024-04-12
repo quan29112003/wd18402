@@ -25,8 +25,18 @@
                             <div class="card-title">thêm ảnh sản phẩm</div>
                         </div><!--end::Header--><!--begin::Form-->
 
-                        <!-- form them moi --> 
+                        <!-- form them moi -->
                         <form action="" method="POST" enctype="multipart/form-data"><!--begin::Body-->
+                            <?php if (isset($_SESSION['errors'])) :  ?>
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        <?php foreach ($_SESSION['errors'] as $error) : ?>
+                                            <li><?= $error ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                                <?php unset($_SESSION['errors']); ?>
+                            <?php endif; ?>
                             <div class="card-body">
                                 <div class="mb-3">
                                     <label for="" class="form-label">ảnh sản phẩm</label>
@@ -36,7 +46,7 @@
                                 <div class="mb3">
                                     <label for="" class="form-label">san pham</label>
                                     <select name="ID_SanPham" id="" class="form-select">
-                                        <option value="<?=$SanPham['SanPhamID'] ?>"><?=$SanPham['TenSanPham'] ?></option>
+                                        <option value="<?= $SanPham['SanPhamID'] ?>"><?= $SanPham['TenSanPham'] ?></option>
                                     </select>
                                 </div>
 

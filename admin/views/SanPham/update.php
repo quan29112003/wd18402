@@ -26,7 +26,16 @@
                         </div><!--end::Header--><!--begin::Form-->
 
                         <form action="" method="POST"><!--begin::Body-->
-                        
+                            <?php if (isset($_SESSION['errors'])) :  ?>
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        <?php foreach ($_SESSION['errors'] as $error) : ?>
+                                            <li><?= $error ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                                <?php unset($_SESSION['errors']); ?>
+                            <?php endif; ?>
                             <div class="card-body">
                                 <input type="text" name="SanPhamID" id="" hidden>
                                 <div class="mb-3">
@@ -38,7 +47,7 @@
                                     <label for="" class="form-label">danh muc san pham</label>
                                     <select name="ID_DanhMuc" id="" class="form-select">
                                         <?php foreach ($dataDanhMuc as $value) : ?>
-                                            <option value="<?= $value['DanhMucID'] ?>"<?= ($value['DanhMucID'] === $SanPham['ID_DanhMuc']) ? 'selected' : '' ?>><?= $value['TenDanhMuc'] ?></option>
+                                            <option value="<?= $value['DanhMucID'] ?>" <?= ($value['DanhMucID'] === $SanPham['ID_DanhMuc']) ? 'selected' : '' ?>><?= $value['TenDanhMuc'] ?></option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>

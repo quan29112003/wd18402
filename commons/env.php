@@ -12,7 +12,7 @@ define('PATH_VIEW_ADMIN', __DIR__ . '/../admin/views/');
 
 
 
-define('PATH_UPLOAD', __DIR__ . '/../');
+define('PATH_UPLOAD', __DIR__ . '/../uploads/');
 
 define('BASE_URL', 'http://localhost/wd18402/');
 define('BASE_URL_ADMIN', 'http://localhost/wd18402/admin/');

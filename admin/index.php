@@ -33,6 +33,9 @@ $arrRouteNeedAuth = [
      'anh-san-pham',
      'anh-san-pham-update',
      'anh-san-pham-delete',
+     
+     'san-pham-an',
+     'san-pham-hien',
 
      'don-hang',
      'don-hang-detail',
@@ -88,11 +91,7 @@ match ($act) {
      'don-hang-detail' => DonHangShow($_GET['id']),
      'don-hang-update' => DonHangUpdate($_GET['id']),
      // crud sản phẩm
-     'san-pham' => SanPhamListAll(),
-     'san-pham-detail' => SanPhamShow($_GET['id']),
-     'san-pham-create' => SanPhamCreate(),
-     'san-pham-update' => SanPhamUpdate($_GET['id']),
-     'san-pham-delete' => SanPhamDelete($_GET['id']),
+
      'san-pham-an' => SanPhamHide($_GET['id']),
      'san-pham-hien' => SanPhamHien($_GET['id']),
 

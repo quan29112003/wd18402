@@ -1,6 +1,3 @@
-<?= require_once PATH_VIEW . 'layouts/partials/header.php' ?>
-
-
 <link rel="stylesheet" href="<?= BASE_URL ?>assets/client/client/css/contact.css">
 <main class="bg_gray">
 
@@ -77,5 +74,3 @@
 	<!-- /bg_white -->
 </main>
 <!--/main-->
-
-<?= require_once PATH_VIEW . 'layouts/partials/footer.php' ?>

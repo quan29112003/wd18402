@@ -25,6 +25,16 @@
                             <div class="card-title">thêm mới danh mục</div>
                         </div><!--end::Header--><!--begin::Form-->
                         <form action="" method="POST"><!--begin::Body-->
+                            <?php if (isset($_SESSION['errors'])) :  ?>
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        <?php foreach ($_SESSION['errors'] as $error) : ?>
+                                            <li><?= $error ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                                <?php unset($_SESSION['errors']); ?>
+                            <?php endif; ?>
                             <div class="card-body">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Tên Danh Mục</label>

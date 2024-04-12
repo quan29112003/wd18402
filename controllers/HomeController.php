@@ -1,13 +1,15 @@
 <?php
 
 // hàm xuất dữ liệu ra file home.php trong file views
-function danhmuc(){
+function danhmuc()
+{
     $dataUser = getAllUser();
-    
+
     require_once PATH_VIEW . 'lient.php';
 }
 
-function index(){
+function index()
+{
 
     $view = 'trangchu';
 
@@ -15,7 +17,7 @@ function index(){
 
     $dataSanPham = list2table('anhsanpham', 'sanpham', 'ID_SanPham', 'sanphamID');
 
-    $SanPhamNew = list2table3('sanpham', 'anhsanpham', 'SanPhamID', 'ID_SanPham','SanPhamID');
+    $SanPhamNew = list2table3('sanpham', 'anhsanpham', 'SanPhamID', 'ID_SanPham', 'SanPhamID');
 
     foreach ($dataSanPham as $value) {
         if ($value['SoLuong'] == 0) {
@@ -39,7 +41,7 @@ function searchProduct()
     // $keyword = $_GET['keyword'];
     // $cate_id = $_GET['catalog'];
 
-    
+
     $dataDanhMuc = listAll('danhmuc');
 
     $data = searchProductInCatalogue();
@@ -47,11 +49,20 @@ function searchProduct()
     require_once PATH_VIEW . 'listdoc.php';
 }
 
-function GioiThieu() {
-    require_once PATH_VIEW . 'gioithieu.php';
+function GioiThieu()
+{
+
+    $view = 'gioithieu';
+
+    $dataDanhMuc = listAll('danhmuc');
+
+    require_once PATH_VIEW . 'layouts/master.php';
 }
-function LienHe() {
-    
+function LienHe()
+{
+    $view = 'lienhe';
+
+    $dataDanhMuc = listAll('danhmuc');
 
     if (!empty($_POST)) {
 
@@ -68,7 +79,8 @@ function LienHe() {
 
         exit;
     }
-    require_once PATH_VIEW . 'lienhe.php';
+    
+    require_once PATH_VIEW . 'layouts/master.php';
 }
 
 // luồng mvc 1: vào index

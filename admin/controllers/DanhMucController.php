@@ -28,12 +28,21 @@ function DanhMuccreate()
 {
     $title = 'thêm mới danh mục';
     $view = 'DanhMuc/create';
-    
+
     if (!empty($_POST)) {
 
         $data = [
             'TenDanhMuc' => $_POST['TenDanhMuc']
         ];
+
+        $errors = validateCreateDanhMuc($data);
+
+        if (!empty($errors)) {
+            $_SESSION['errors'] = $errors;
+            $_SESSION['data'] = $data;
+            header('Location: ' . BASE_URL_ADMIN . '?act=danh-muc-create');
+            exit();
+        }
 
         insert('danhmuc', $data);
 
@@ -44,6 +53,16 @@ function DanhMuccreate()
 
 
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
+}
+
+function validateCreateDanhMuc($data)
+{
+    $errors = [];
+    if (empty($data['TenDanhMuc'])) {
+        $errors[] = 'Trường tên danh mục là bắt buộc';
+    }
+
+    return $errors;
 }
 
 function DanhMucupdate($id)
@@ -63,6 +82,15 @@ function DanhMucupdate($id)
             'TenDanhMuc' => $_POST['TenDanhMuc']
         ];
 
+        $errors = validateUpdateDanhMuc($data);
+
+        if (!empty($errors)) {
+            $_SESSION['errors'] = $errors;
+            $_SESSION['data'] = $data;
+            header('Location: ' . BASE_URL_ADMIN . '?act=danh-muc-update&id=' . $id);
+            exit();
+        }
+
         update('danhmuc', 'DanhMucID',  $id, $data);
 
         header('Location: ' . BASE_URL_ADMIN . '?act=danh-muc');
@@ -72,6 +100,16 @@ function DanhMucupdate($id)
 
 
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
+}
+
+function validateUpdateDanhMuc($data)
+{
+    $errors = [];
+    if (empty($data['TenDanhMuc'])) {
+        $errors[] = 'Trường tên danh mục là bắt buộc';
+    }
+
+    return $errors;
 }
 
 function DanhMucdelete($id)

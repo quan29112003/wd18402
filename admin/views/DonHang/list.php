@@ -21,6 +21,7 @@
                                 <thead>
                                     <tr>
                                         <th>thông tin người đặt</th>
+                                        <th>id đơn hàng</th>
                                         <th>tên sản phẩm</th>
                                         <th>Thanh toán</th>
                                         <th>Ngày đặt hàng</th>

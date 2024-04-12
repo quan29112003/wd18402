@@ -36,7 +36,7 @@ if (!function_exists('e404')) {
 if (!function_exists('upload_file')) {
     function upload_file($file)
     {
-        $path = 'uploads/' . time() . '-' . basename($file['name']);
+        $path = time() . '-' . basename($file['name']);
         $anhpath = time() . '-' . basename($file['name']);
         if (move_uploaded_file($file['tmp_name'], PATH_UPLOAD . $path)) {
             return $anhpath;

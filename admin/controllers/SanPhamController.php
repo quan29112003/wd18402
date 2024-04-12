@@ -88,9 +88,6 @@ function validateCreateProduct($data)
         $errors[] = 'Trường giá sản phẩm là bắt buộc';
     }
 
-    if (empty($data['SoLuong'])) {
-        $errors[] = 'Trường số lượng sản phẩm là bắt buộc';
-    }
 
     return $errors;
 }
@@ -116,6 +113,15 @@ function AnhSPCreate($id)
             // upload_file nằm trong commons/helper là function upload ảnh
             $data['anhSP1'] = upload_file($anh);
         }
+
+        $errors = validateCreateImg($data);
+
+        if (!empty($errors)) {
+            $_SESSION['errors'] = $errors;
+            $_SESSION['data'] = $data;
+            header('Location: ' . BASE_URL_ADMIN . '?act=anh-san-pham&id=' . $id);
+            exit();
+        }
         // thêm ảnh 
         insert('anhsanpham', $data);
 
@@ -127,6 +133,22 @@ function AnhSPCreate($id)
 
 
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
+}
+
+function validateCreateImg($data)
+{
+    $errors = [];
+    if (empty($data['anhSP1'])) {
+        $errors[] = 'Trường ảnh là bắt buộc';
+    }
+
+    $type = ['image/png', 'image/jpg', 'image/jpeg'];
+
+    // if(!in_array($data['anhSP1']['type'], $type)){
+    //     $errors[] = 'Trường ảnh không đúng định dạng';
+    // }
+
+    return $errors;
 }
 
 // cập nhật ảnh sản phẩm
@@ -187,6 +209,8 @@ function SanPhamUpdate($id)
     $title = 'thêm mới sản phẩm';
     $view = 'SanPham/update';
 
+
+
     if (!empty($_POST)) {
 
         $data = [
@@ -196,6 +220,15 @@ function SanPhamUpdate($id)
             'SoLuong' => $_POST['SoLuong'],
             'MoTa' => $_POST['MoTa'],
         ];
+
+        $errors = validateUpdateProduct($data);
+
+        if (!empty($errors)) {
+            $_SESSION['errors'] = $errors;
+            $_SESSION['data'] = $data;
+            header('Location: ' . BASE_URL_ADMIN . '?act=san-pham-update&id=' . $id);
+            exit();
+        }
 
         // cập nhật sản phẩm
         update('sanpham', 'SanPhamID', $id, $data);
@@ -211,6 +244,20 @@ function SanPhamUpdate($id)
 }
 
 // xóa sản phẩm
+
+function validateUpdateProduct($data)
+{
+    $errors = [];
+    if (empty($data['TenSanPham'])) {
+        $errors[] = 'Trường tên sản phẩm là bắt buộc';
+    }
+
+    if (empty($data['GiaSP'])) {
+        $errors[] = 'Trường giá sản phẩm là bắt buộc';
+    }
+
+    return $errors;
+}
 
 function AnhSPDelete($id)
 {
