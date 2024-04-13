@@ -7,10 +7,10 @@ function cartAdd($productID, $quantity = 1)
     $product = showOne2table('sanpham', 'anhsanpham', 'SanPhamID', 'ID_SanPham', 'SanPhamID', $productID);
 
     
-    // $cartID = getCartID($_SESSION['user']['id']);
+    $cartID = getCartID($_SESSION['user']['id']);
 
 
-    // $_SESSION['cartID'] = $cartID;
+    $_SESSION['cartID'] = $cartID;
 
     // B3: Thêm vào session, dùng productID để làm key cho từng item cart
     if (!isset($_SESSION['cart'][$productID])) {
@@ -20,20 +20,20 @@ function cartAdd($productID, $quantity = 1)
 
     
             //Thêm vào cart items
-            // insert('cart_items', [
-            //     'cart_id' => $cartID,
-            //     'product_id' => $productID,
-            //     'quantity' => $quantity
-            // ]);
+            insert('cart_items', [
+                'cart_id' => $cartID,
+                'product_id' => $productID,
+                'quantity' => $quantity
+            ]);
 
 
     } else {
         $qtyTMP = $_SESSION['cart'][$productID]['quantity'] += $quantity;
 
-        // updateQuantityByCartIDAndProductID($cartID, $productID, $qtyTMP);
+        updateQuantityByCartIDAndProductID($cartID, $productID, $qtyTMP);
     }
 
-    // $data = list3table('cart_items', 'sanpham','anhsanpham', 'product_id', 'SanPhamID', 'product_id', 'ID_SanPham');
+    $data = list3table('cart_items', 'sanpham','anhsanpham', 'product_id', 'SanPhamID', 'product_id', 'ID_SanPham');
 
     // B4: Trả về view giỏ hàng
     header('Location: ' . BASE_URL . '?act=cart-list');
