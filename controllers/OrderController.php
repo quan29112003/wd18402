@@ -14,7 +14,7 @@ function orderPurchase()
         try {
             // Xử lý lưu vào bảng orders và order_items
             $data = $_POST;
-            $data['user_id']            = $_SESSION['user']['id'];                          
+            $data['user_id']            = $_SESSION['user']['id'];
             $data['total_bill']         = caculator_total_order(false);
             $data['status_delivery']    = STATUS_DELIVERY_WFC;
             // $data['status_payment']     = STATUS_PAYMENT_UNPAID;
@@ -37,15 +37,14 @@ function orderPurchase()
                 $SoLuong = 0;
 
                 foreach ($dataSoLuong as $value) {
-                    if($item['SanPhamID'] == $value['SanPhamID']){
+                    if ($item['SanPhamID'] == $value['SanPhamID']) {
                         $SoLuong = $value['SoLuong'] - $item['quantity'];
                     }
                 }
-                
+
                 insert('order_items', $orderItem);
 
                 UpdateSoLuongSP($SoLuong, $item['SanPhamID']);
-
             }
 
             // Xử lý hậu
@@ -76,6 +75,12 @@ function KiemTraDonHang($id)
     $dataDanhMuc = listAll('danhmuc');
     $DonHangDaMua = list3table2('orders', 'users', 'order_items', 'user_id', 'id', 'id', 'order_id', 'user_id', $id);
 
+    $order_items = listAll('order_items');
+
+
+    $sanpham = listAll('sanpham');
+
+    $hoanSoLuongSP = 0;
 
     if (empty($DonHangDaMua)) {
         $_SESSION['error'] = 'Không có gì!';
@@ -85,13 +90,29 @@ function KiemTraDonHang($id)
 
         $data = [
             'status_delivery' => $_POST['status_delivery'],
-
         ];
+
+        if ($_POST['status_delivery'] == -1) {
+            foreach ($order_items as $value) {
+                if ($value['order_id'] == $id) {
+                    foreach ($sanpham as $item) {
+                        if ($value['product_id'] == $item['SanPhamID']) {
+                            // $idsp = $item['SanPhamID']
+
+                            $hoanSoLuongSP = (int)$item['SoLuong'] + (int)$value['quantity'];
+                            // debug($value['product_id']);
+                            // debug($hoanSoLuongSP);
+                            updateSoLuong($hoanSoLuongSP, $item['SanPhamID']);
+                        }
+                    }
+                }
+            }
+        }
 
 
         update('orders', 'id', $id, $data);
 
-        header('Location: ' . BASE_URL . '?act=kiemtradonhang&id=' .$_SESSION['user']['id']);
+        header('Location: ' . BASE_URL . '?act=kiemtradonhang&id=' . $_SESSION['user']['id']);
 
         exit;
     }
